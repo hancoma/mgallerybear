@@ -45,5 +45,14 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+    },
+    onmain : function() {
+         setTimeout(function() {
+      startapp();
+      }, 2000);
     }
 };
+
+function startapp() {
+    location.replace('http://gallerybear.com/') ;
+}

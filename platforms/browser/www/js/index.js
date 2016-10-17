@@ -45,14 +45,31 @@ var app = {
         receivedElement.setAttribute('style', 'display:block;');
 
         console.log('Received Event: ' + id);
+        app.onmain();
     },
     onmain : function() {
          setTimeout(function() {
       startapp();
-      }, 2000);
+      }, 1000);
     }
 };
 
 function startapp() {
-    location.replace('http://gallerybear.com/') ;
+    var ref = cordova.InAppBrowser.open('http://gallerybear.com', '_blank', 'location=no');
+}
+
+// msg 
+function alertDismissed() {
+    // do something
+}
+
+function alert_msg(title,msg) {
+    var title=title;
+    var msg=msg;
+   navigator.notification.alert(
+    msg,  // message
+    alertDismissed,         // callback
+    title,            // title
+    '확인'                  // buttonName
+);
 }

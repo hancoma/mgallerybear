@@ -37,39 +37,23 @@ var app = {
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
+       
         console.log('Received Event: ' + id);
         app.onmain();
     },
     onmain : function() {
-         setTimeout(function() {
-      startapp();
-      }, 1000);
+   
     }
 };
 
-function startapp() {
-    location.replace('main.html') ;
-}
+var mode="shop_list";
 
-// msg 
-function alertDismissed() {
-    // do something
-}
+ $.post("http://gallerybear.com/map_api.php",
+   {
+    mode:mode
+    
+       },
+   function(data){
+$("#company_list").html(data);
+   });
 
-function alert_msg(title,msg) {
-    var title=title;
-    var msg=msg;
-   navigator.notification.alert(
-    msg,  // message
-    alertDismissed,         // callback
-    title,            // title
-    '확인'                  // buttonName
-);
-}

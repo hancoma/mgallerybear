@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+ 
+     
+       <link href="css/ratchet.min.css" rel="stylesheet">
+ <link rel="stylesheet" type="text/css" href="css/uikit.min.css">
+          <script src="js/uikit.js"></script>
+          <script src="js/ratchet.js"></script>
+             <link rel="stylesheet" type="text/css" href="css/app.css" />
+                    <script type="text/javascript" src="cordova.js"></script>
+  
+    <title>Hello World</title>
+</head>
+
+<body>
+<header class="bar bar-nav">
+ <a class="icon icon-left-nav pull-left"  href="#"  onclick="open_left();"></a>
+  <a class="icon icon-gear pull-right"  onclick="open_right();"></a>
+  <h1 class="title">GALLERYBEAR</h1>
+</header>
+<div id="company_list">
+</div>
+<div id="offcanvas-left" class="uk-offcanvas" aria-hidden="true" >
+                                <div class="uk-offcanvas-bar" mode="slide">
+                                    <div class="uk-panel">Lorem ipsum dolor sit amet, <a href="#">consectetur</a> adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+
+                                    <div class="uk-panel">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                                </div>
+                            </div>
+<div id="offcanvas-right" class="uk-offcanvas" aria-hidden="true">
+
+                                <div class="uk-offcanvas-bar uk-offcanvas-bar-flip" mode="push">
+
+                                    <ul class="uk-nav uk-nav-offcanvas uk-nav-parent-icon" data-uk-nav="">
+                                        <li><a href="">Item</a></li>
+                                        <li class="uk-active"><a href="">Active</a></li>
+
+                                        <li class="uk-parent" aria-expanded="false">
+                                            <a href="#">Parent</a>
+                                            <div style="overflow:hidden;height:0;position:relative;" class="uk-hidden"><ul class="uk-nav-sub" role="menu">
+                                                <li><a href="">Sub item</a></li>
+                                                <li><a href="">Sub item</a>
+                                                    <ul>
+                                                        <li><a href="">Sub item</a></li>
+                                                        <li><a href="">Sub item</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul></div>
+                                        </li>
+
+                                        <li class="uk-parent" aria-expanded="false">
+                                            <a href="#">Parent</a>
+                                            <div style="overflow:hidden;height:0;position:relative;" class="uk-hidden"><ul class="uk-nav-sub" role="menu">
+                                                <li><a href="">Sub item</a></li>
+                                                <li><a href="">Sub item</a></li>
+                                            </ul></div>
+                                        </li>
+
+                                        <li><a href="">Item</a></li>
+
+                                        <li class="uk-nav-header">Header</li>
+                                        <li class="uk-parent"><a href=""><i class="uk-icon-star"></i> Parent</a></li>
+                                        <li><a href=""><i class="uk-icon-twitter"></i> Item</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li><a href=""><i class="uk-icon-rss"></i> Item</a></li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+     <script type="text/javascript" charset="utf-8" src="js/PushNotification.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+
+</html>

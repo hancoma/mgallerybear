@@ -55,7 +55,7 @@ var app = {
 };
 
 function startapp() {
-    var ref = cordova.InAppBrowser.open('http://gallerybear.com', '_blank', 'location=no');
+    location.replace('main.html') ;
 }
 
 // msg 

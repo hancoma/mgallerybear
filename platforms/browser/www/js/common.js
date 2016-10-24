@@ -182,22 +182,19 @@ $("#company_list").html(data);
       $("#self_camera_sub_menu").toggle(500);
       // body...
   }
-  $("#parade_menu").click(
-    function () {
+  function parade_menu_show() {
       $("#parade_sub_menu").toggle(500);
       // body...
-    })
-  $("#sns_menu").click(
-    function () {
+ }
+ function sns_menu_show() {
       $("#sns_sub_menu").toggle(500);
-      // body...
-    })
-  $("#global_menu").click(
-    function() {
+     
+}
+function global_menu_show() {
       $("#global_sub_menu").toggle(500);
-    })
-  $("#premium_menu").click(
-    function() {
+ }
+ function premium_menu_show() {
       $("#premium_sub_menu").toggle(500);
-    })
-  // 메뉴 클릭
+  
+ }
+ // 메뉴 클릭

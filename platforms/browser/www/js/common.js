@@ -5,7 +5,7 @@ function open_left() {
 
 function open_right() {
     UIkit.offcanvas.show('#offcanvas-right');
-
+    load_right();
 }
 
 // msg 
@@ -32,4 +32,110 @@ function load_left() {
    function(data){
 $("#left_menu").html(data);
    });
+}
+
+function load_right() {
+    $.post("http://gallerybear.com/right_menu_app.php",
+   {
+    
+    
+       },
+   function(data){
+$("#right_menu").html(data);
+   });
+}
+
+function talent_show(cat) {
+  var cat=cat;
+ $.post("http://gallerybear.com/talent_list_app.php",
+   {
+    cat:cat
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+   });
+
+}
+
+function freeboard_show(cat) {
+  var cat=cat;
+ $.post("http://gallerybear.com/freeboard_list_app.php",
+   {
+    cat:cat
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+   });
+
+}
+
+function parade_show(cat) {
+  var cat=cat;
+ $.post("http://gallerybear.com/parade_list_app.php",
+   {
+    cat:cat
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+   });
+
+}
+
+function chat_job_show(cat) {
+  var cat=cat;
+ $.post("http://gallerybear.com/chat_job_app.php",
+   {
+    sub_code:cat
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+   });
+
+}
+
+function chat_show() {
+   $.post("http://gallerybear.com/chat_app.php",
+   {
+    
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+   });
+
+}
+function friend_show() {
+   $.post("http://gallerybear.com/around_list_app.php",
+   {
+    
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+   });
+
+}
+
+function global_show(sub_code) {
+  var sub_code=sub_code;
+   $.post("http://gallerybear.com/global_list_app.php",
+   {
+    sub_code:sub_code
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+   });
+
 }

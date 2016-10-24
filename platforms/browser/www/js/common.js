@@ -55,6 +55,7 @@ function talent_show(cat) {
    function(data){
 
 $("#company_list").html(data);
+  UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
@@ -69,6 +70,7 @@ function freeboard_show(cat) {
    function(data){
 
 $("#company_list").html(data);
+UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
@@ -83,6 +85,7 @@ function parade_show(cat) {
    function(data){
 
 $("#company_list").html(data);
+UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
@@ -97,6 +100,7 @@ function chat_job_show(cat) {
    function(data){
 
 $("#company_list").html(data);
+UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
@@ -110,6 +114,7 @@ function chat_show() {
    function(data){
 
 $("#company_list").html(data);
+UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
@@ -122,6 +127,7 @@ function friend_show() {
    function(data){
 
 $("#company_list").html(data);
+UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
@@ -136,6 +142,7 @@ function global_show(sub_code) {
    function(data){
 
 $("#company_list").html(data);
+UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
@@ -163,6 +170,7 @@ function premium_show(sub_code) {
    function(data){
 
 $("#company_list").html(data);
+UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
@@ -198,3 +206,39 @@ function global_menu_show() {
   
  }
  // 메뉴 클릭
+
+// 모달 호출 
+function contents_modal_show(menu,no) {
+    var menu=menu;
+    var no=no;
+     $.post("http://gallerybear.com/talent_info_modal_app.php",
+   {
+    no:no
+    
+       },
+   function(data){
+
+$("#contents_div").html(data);
+
+   });
+
+  jQuery('#contents_modal').addClass('active');
+    jQuery('#contents_modal_title').html('SELF CAMERA');
+}
+
+function member_info_modal_show(memberuid) {
+  var memberuid=memberuid;
+    $.post("http://gallerybear.com/member_info_modal_app.php",
+   {
+    no:memberuid
+    
+       },
+   function(data){
+
+$("#member_info_div").html(data);
+
+   });
+jQuery('#contents_modal').removeClass('active');
+  jQuery('#member_info_modal').addClass('active');
+
+}

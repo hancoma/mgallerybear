@@ -48,7 +48,7 @@ var app = {
 
 var mode="shop_list";
 
- $.post("http://gallerybear.com/map_api.php",
+ $.post("http://gallerybear.com/map_api_app.php",
    {
     mode:mode
     

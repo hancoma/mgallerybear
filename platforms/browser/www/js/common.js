@@ -1,6 +1,6 @@
 function open_left() {
     UIkit.offcanvas.show('#offcanvas-left');
-
+    load_left();
 }
 
 function open_right() {
@@ -22,4 +22,14 @@ function alert_msg(title,msg) {
     title,            // title
     '확인'                  // buttonName
 );
+}
+function load_left() {
+    $.post("http://gallerybear.com/left_menu_app.php",
+   {
+    
+    
+       },
+   function(data){
+$("#left_menu").html(data);
+   });
 }

@@ -139,3 +139,31 @@ $("#company_list").html(data);
    });
 
 }
+
+function premium_show(sub_code) {
+  var sub_code=sub_code;
+  if (sub_code==1) {
+    var url="http://gallerybear.com/premium1_app.php";
+  }
+  if (sub_code==2) {
+    var url="http://gallerybear.com/premium2_app.php";
+  }
+  if (sub_code==3) {
+    var url="http://gallerybear.com/premium3_app.php";
+  }
+  if (sub_code==4) {
+    var url="http://gallerybear.com/premium4_app.php";
+  }
+
+   $.post(url,
+   {
+    
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+   });
+
+}
+

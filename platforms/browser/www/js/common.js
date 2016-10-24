@@ -211,7 +211,17 @@ function global_menu_show() {
 function contents_modal_show(menu,no) {
     var menu=menu;
     var no=no;
-     $.post("http://gallerybear.com/talent_info_modal_app.php",
+    if (menu=="talent") {
+      var url="http://gallerybear.com/talent_info_modal_app.php";
+    }
+    if (menu=="freeboard") {
+      var url="http://gallerybear.com/freeboard_info_modal_app.php";
+    }
+if (menu=="parade") {
+      var url="http://gallerybear.com/parade_info_modal_app.php";
+    }
+
+     $.post(url,
    {
     no:no
     

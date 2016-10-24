@@ -167,3 +167,37 @@ $("#company_list").html(data);
 
 }
 
+
+
+    function map_menu_show() {
+      $("#map_sub_menu").toggle(500);
+      // body...
+    }
+    function freeboard_menu_show() {
+ 
+      $("#freeboard_sub_menu").toggle(500);
+      // body...
+ }
+ function self_camera_menu_show () {
+      $("#self_camera_sub_menu").toggle(500);
+      // body...
+  }
+  $("#parade_menu").click(
+    function () {
+      $("#parade_sub_menu").toggle(500);
+      // body...
+    })
+  $("#sns_menu").click(
+    function () {
+      $("#sns_sub_menu").toggle(500);
+      // body...
+    })
+  $("#global_menu").click(
+    function() {
+      $("#global_sub_menu").toggle(500);
+    })
+  $("#premium_menu").click(
+    function() {
+      $("#premium_sub_menu").toggle(500);
+    })
+  // 메뉴 클릭

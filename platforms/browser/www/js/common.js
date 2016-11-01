@@ -206,7 +206,21 @@ function global_menu_show() {
   
  }
  // 메뉴 클릭
+// 맵 보이기 
+function map_show(kind_no) {
+  var kind_no=kind_no;
+  var url="http://gallerybear.com/map_kind_app.php";
+   $.post(url,
+   {
+    kind_no:kind_no
+    
+       },
+   function(data){
 
+$("#company_list").html(data);
+
+   });
+}
 // 모달 호출 
 function contents_modal_show(menu,no) {
     var menu=menu;

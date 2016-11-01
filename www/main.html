@@ -123,23 +123,28 @@ function initMap() {
   });
   
 }
-  var locations=$.getJSON( "http://gallerybear.com/map_api_app.php");
- 
 var infowindow = new google.maps.InfoWindow();
     var marker, i;
-    for (i = 0; i < locations.length; i++) {  
+   $.getJSON('http://gallerybear.com/map_api_app.php', function(data) {
+      
+        $.each(data, function(entryIndex, entry) {
+         i=i+1;
       marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        position: new google.maps.LatLng(entry.data_x, entry.data_y),
         map: map
       });
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i][0]);
+          infowindow.setContent(entry.company);
           infowindow.open(map, marker);
         }
       })(marker, i));
         markers.push(marker);
-    }
+        });
+ 
+
+    
+  
 
 
 

@@ -218,7 +218,7 @@ function map_show(kind_no) {
    function(data){
 
 $("#company_list").html(data);
-
+$("#map").show();
    });
 }
 // 모달 호출 

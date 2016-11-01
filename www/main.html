@@ -123,17 +123,8 @@ function initMap() {
   });
   
 }
-
-  $.post("http://gallerybear.com/map_api_app.php",
-   {
-   
-    
-       },
-   function(data){
-
-          var locations=data;
-
-   });
+  var locations=$.getJSON( "http://gallerybear.com/map_api_app.php");
+ 
 var infowindow = new google.maps.InfoWindow();
     var marker, i;
     for (i = 0; i < locations.length; i++) {  

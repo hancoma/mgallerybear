@@ -239,6 +239,7 @@ if ( modal.isActive() ) {
 } else {
     modal.show();
 }
+ jQuery("#modal_title").html(menu);
 }
 
 function member_info_modal_show(memberuid) {
@@ -250,10 +251,18 @@ function member_info_modal_show(memberuid) {
        },
    function(data){
 
-$("#member_info_div").html(data);
+$("#member_modal_contents").html(data);
 
    });
-jQuery('#contents_modal').removeClass('active');
-  jQuery('#member_info_modal').addClass('active');
+
+
+var modal = UIkit.modal("member_uk_modal");
+
+if ( modal.isActive() ) {
+    modal.hide();
+} else {
+    modal.show();
+}
+ 
 
 }

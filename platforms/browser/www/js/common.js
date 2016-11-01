@@ -219,6 +219,7 @@ function map_show(kind_no) {
 
 $("#company_list").html(data);
 $("#map").show();
+alert(kind_no);
    });
 }
 // 모달 호출 

@@ -256,7 +256,7 @@ $("#member_modal_contents").html(data);
    });
 
 
-var modal = UIkit.modal("member_uk_modal");
+var modal = UIkit.modal("#member_uk_modal");
 
 if ( modal.isActive() ) {
     modal.hide();

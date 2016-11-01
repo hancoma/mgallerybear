@@ -210,6 +210,7 @@ function global_menu_show() {
 function map_show(kind_no) {
   var kind_no=kind_no;
   var url="http://gallerybear.com/map_kind_app.php";
+  UIkit.offcanvas.hide('#offcanvas-left');
    $.post(url,
    {
     kind_no:kind_no

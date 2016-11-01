@@ -228,12 +228,17 @@ if (menu=="parade") {
        },
    function(data){
 
-$("#contents_div").html(data);
+$("#modal_contents").html(data);
 
    });
 
-  jQuery('#contents_modal').addClass('active');
-    jQuery('#contents_modal_title').html('SELF CAMERA');
+var modal = UIkit.modal("#contents_uk_modal");
+
+if ( modal.isActive() ) {
+    modal.hide();
+} else {
+    modal.show();
+}
 }
 
 function member_info_modal_show(memberuid) {

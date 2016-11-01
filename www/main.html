@@ -115,37 +115,57 @@
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIjYYnR4RImDb8X_tD1s8ud0I0KeGAKDs"></script>
      <script>
     var map;
-    initMap();
+    var locations;
+    var data_app;
+      var marker, i;
+      var markers;
+     initMap();
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: {lat: -34.397, lng: 150.644},
     zoom: 5
   });
+
+  $.post("http://gallerybear.com/shop_api_app.php",
+   {
+  
+    
+       },
+   function(data){
+    data_app=data;
+  
+    marker_load();
+   
+   });
+
+
+
   
 }
+function marker_load() {
+
+
+  var locations=data_app.split("//!//");
 var infowindow = new google.maps.InfoWindow();
-    var marker, i;
-   $.getJSON('http://gallerybear.com/map_api_app.php', function(data) {
-      
-        $.each(data, function(entryIndex, entry) {
-         i=i+1;
+
+    for (i = 0; i < locations.length; i++) { 
+     
+    var data_company=locations[i].split(","); 
+
       marker = new google.maps.Marker({
-        position: new google.maps.LatLng(entry.data_x, entry.data_y),
+        position: new google.maps.LatLng(data_company[1], data_company[2]),
         map: map
       });
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(entry.company);
+          infowindow.setContent(data_company[0]);
           infowindow.open(map, marker);
         }
       })(marker, i));
         markers.push(marker);
-        });
- 
-
+    }
+}
     
-  
-
 
 
   </script>

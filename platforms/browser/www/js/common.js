@@ -282,3 +282,29 @@ if ( modal.isActive() ) {
  
 
 }
+
+
+function open_shop(no) {
+  var no=no;
+    $.post("http://gallerybear.com/shop_info_modal_app.php",
+   {
+    no:no
+    
+       },
+   function(data){
+
+$("#shop_modal_contents").html(data);
+
+   });
+$("#shop_modal_title").html("SHOP INFORMATION")
+
+var modal = UIkit.modal("#shop_uk_modal");
+
+if ( modal.isActive() ) {
+    modal.hide();
+} else {
+    modal.show();
+}
+ 
+
+}

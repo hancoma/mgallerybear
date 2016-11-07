@@ -39,11 +39,14 @@ var app = {
     receivedEvent: function(id) {
        
         console.log('Received Event: ' + id);
+       
         app.onmain();
     },
     onmain : function() {
    
-    }
+   
+    
+}
 };
 
 var mode="shop_list";

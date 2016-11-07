@@ -78,6 +78,21 @@
                                 </div>
                             </div>
 
+
+<div id="shop_uk_modal" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
+                                <div class="uk-modal-dialog">
+                                    <button type="button" class="uk-modal-close uk-close"></button>
+                                    <div class="uk-modal-header">
+                                        <h2 id="shop_modal_title">SHOP INFOMATION</h2>
+                                    </div>
+                                    <p id="shop_modal_contents">LOADING DATA...</p>
+                                    <div class="uk-modal-footer uk-text-right" id="shop_modal_btn">
+                                        <button type="button" class="uk-button">Cancel</button>
+                                        <button type="button" class="uk-button uk-button-primary">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+
 <div id="member_info_modal" class="modal">
   <header class="bar bar-nav">
     <a class="icon icon-close pull-right" href="#member_info_modal"></a>
@@ -133,9 +148,12 @@
     var map;
     var locations;
     var data_app;
+     var company_name;
     var map_kind;
 var chicago = {lat: 41.85, lng: -87.65}; 
     var markers = new Array();
+    var data_company=new Array();
+   
      initMap();
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -218,17 +236,22 @@ function marker_load() {
   var locations=data_app.split("//!//");
 var infowindow = new google.maps.InfoWindow();
       var marker, i;
+  
     for (i = 0; i < locations.length; i++) { 
      
-    var data_company=locations[i].split(","); 
+    data_company=locations[i].split(","); 
+    company_name=data_company[4];
 
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(data_company[1], data_company[2]),
-        map: map
+        map: map,
+        title: company_name
       });
+       
+
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(data_company[0]);
+       
           infowindow.open(map, marker);
         }
       })(marker, i));

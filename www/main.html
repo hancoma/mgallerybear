@@ -165,6 +165,18 @@ function initMap() {
 
   centerControlDiv.index = 1;
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
+ 
+$.ajax({
+ type: "GET",
+ url: "http://gallerybear.com/shop_json_app.php",
+ crossDomain: true,
+ cache: false,
+ success: function(result){
+ var result=$.parseJSON(result);
+ $.each(result, function(i, field){
+ console.log("업체명"+field.title);
+ });
+ }});
 
 
   $.post("http://gallerybear.com/shop_api_app.php",
@@ -240,18 +252,18 @@ var infowindow = new google.maps.InfoWindow();
     for (i = 0; i < locations.length; i++) { 
      
     data_company=locations[i].split(","); 
-    company_name=data_company[4];
+    var name=data_company[0];
 
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(data_company[1], data_company[2]),
-        map: map,
-        title: company_name
-      });
+        map: map
+     });
        
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-         alert(company_name);
+
+          console.log(name);         
           infowindow.open(map, marker);
         }
       })(marker, i));

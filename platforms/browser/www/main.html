@@ -153,6 +153,10 @@
 var chicago = {lat: 41.85, lng: -87.65}; 
     var markers = new Array();
     var data_company=new Array();
+    var data_no=new Array();
+    var data_point_x=new Array();
+    var data_point_y=new Array();
+
    
      initMap();
 function initMap() {
@@ -173,27 +177,29 @@ $.ajax({
  cache: false,
  success: function(result){
  var result=$.parseJSON(result);
+
  $.each(result, function(i, field){
- console.log("업체명"+field.title);
+   data_company.push(field.title);
+   data_no.push(field.no);
+   data_point_y.push(field.point_y);
+   data_point_x.push(field.point_x);
+
+ 
+
  });
+ 
+
+ marker_load();
+
+
+
  }});
 
 
-  $.post("http://gallerybear.com/shop_api_app.php",
-   {
-  
-    
-       },
-   function(data){
-    data_app=data;
-  
-    marker_load();
-   
-   });
+}
 
-
-
-  
+function count_map() {
+  console.log(data_no.length);
 }
 
 function CenterControl(controlDiv, map) {
@@ -245,17 +251,15 @@ $.post("http://gallerybear.com/map_kind_menu.php",
 function marker_load() {
 
 
-  var locations=data_app.split("//!//");
+  
 var infowindow = new google.maps.InfoWindow();
       var marker, i;
   
-    for (i = 0; i < locations.length; i++) { 
+    for (i = 0; i < data_no.length; i++) { 
      
-    data_company=locations[i].split(","); 
-    var name=data_company[0];
-
+       
       marker = new google.maps.Marker({
-        position: new google.maps.LatLng(data_company[1], data_company[2]),
+        position: new google.maps.LatLng(data_point_x[i], data_point_y[i]),
         map: map
      });
        
@@ -263,7 +267,8 @@ var infowindow = new google.maps.InfoWindow();
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
 
-          console.log(name);         
+          
+          infowindow.setContent(data_company[i]);
           infowindow.open(map, marker);
         }
       })(marker, i));

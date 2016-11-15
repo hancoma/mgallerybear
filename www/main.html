@@ -271,7 +271,7 @@ var infowindow = new google.maps.InfoWindow();
         return function() {
 
           
-          infowindow.setContent(data_company[i]);
+          infowindow.setContent("<span onclick='open_shop("+data_no[i]+")'>"+data_company[i]+"</span>");
           infowindow.open(map, marker);
         }
       })(marker, i));

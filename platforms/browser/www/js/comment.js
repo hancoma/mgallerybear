@@ -10,7 +10,30 @@ function save_freeboard_comment(no) {
        },
    function(data){
           if (data=="ok") {
-            alert_msg("freeboard","save_comment");
+            
+            contents_modal_show("freeboard",no);
+
+          }
+   });
+
+	
+}
+
+function save_parade_comment(no) {
+	var no=no;
+	var parade_comment=$("#parade_comment").val();
+	  $.post("http://gallerybear.com/parade_comment_save.php",
+   {
+    no:no,
+    memberuid:memberuid,
+    parade_comment:parade_comment
+    
+       },
+   function(data){
+          if (data=="ok") {
+            
+            contents_modal_show("parade",no);
+
           }
    });
 

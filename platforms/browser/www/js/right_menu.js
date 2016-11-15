@@ -236,6 +236,50 @@ $("#mypage_modal_contents").html(data);
 
 }
 
+function save_password() {
+  var old_password=$("#old_password").val();
+  var new_password=$("#new_password").val();
+  var new_password2=$("#new_password2").val();
+  if (!old_password) {
+    alert_msg("MSG","PLZ old password");
+    exit;
+  }
+  if (!new_password) {
+    alert_msg("MSG","PLZ new password");
+    exit;
+  }
+
+  if (!new_password2) {
+    alert_msg("MSG","PLZ new password");
+    exit;
+  }
+
+  if (new_password!=new_password2) {
+   alert_msg("MSG","New password mismatch");
+    exit; 
+  }   
+
+   $.post("http://gallerybear.com/save_password_app.php",
+   {
+   memberuid:memberuid,
+   old_password:old_password,
+   new_password:new_password
+    
+       },
+   function(data){
+    if (data=="ok") {
+      alert_msg("thank change password");
+      var modal = UIkit.modal("#mypage_uk_modal");
+
+    modal.hide();
+
+    } else {
+     alert_msg(data);
+
+    }
+   });
+}
+
 function view_membershipwithdrawal() {
   var uuid=device.uuid;
  

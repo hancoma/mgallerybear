@@ -94,7 +94,25 @@
                                     </div>
                                 </div>
                             </div>
-
+<div id="modal_chat" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
+                            <div class="uk-modal-dialog uk-modal-dialog-large">
+                                <button type="button" class="uk-modal-close uk-close"></button>
+                                <h1>CHATTING ROOM</h1>
+                                
+                   
+                                <div class="uk-overflow-container" id="chat_body" style="max-height: 464px;">
+                                    
+                                </div>
+                               
+                                <p>
+                                  <div class="input-group margin-bottom-20">
+        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
+        <input type="hidden" name="room_no" value="" id="room_no">
+        <input type="text" class="form-control" placeholder="MESSAGE" id="chat_msg">
+      </div><a href="#" class="uk-width-1-1 uk-button uk-button-success" id="send_btn" onclick="save_chat();">SEND</a>
+                                </p>
+                            </div>
+                        </div>
 <div id="member_info_modal" class="modal">
   <header class="bar bar-nav">
     <a class="icon icon-close pull-right" href="#member_info_modal"></a>
@@ -145,6 +163,7 @@
     </script>
      <script type="text/javascript" src="js/common.js"></script>
      <script type="text/javascript" src="js/comment.js"></script>
+     <script type="text/javascript" src="js/chat.js"></script>
      <script type="text/javascript" src="js/right_menu.js"></script>
       <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCIjYYnR4RImDb8X_tD1s8ud0I0KeGAKDs"></script>
      <script>

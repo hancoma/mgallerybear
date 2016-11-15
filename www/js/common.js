@@ -127,6 +127,7 @@ function chat_show() {
    $.post("http://gallerybear.com/chat_app.php",
    {
     
+    memebruid:memberuid
     
        },
    function(data){

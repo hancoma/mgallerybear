@@ -1,3 +1,6 @@
+var user_id = window.localStorage.getItem("user_id");
+var memberuid = window.localStorage.getItem("memberuid");
+
 function open_left() {
     UIkit.offcanvas.show('#offcanvas-left');
     load_left();
@@ -20,7 +23,7 @@ function alert_msg(title,msg) {
     msg,  // message
     alertDismissed,         // callback
     title,            // title
-    '확인'                  // buttonName
+    'OK'                  // buttonName
 );
 }
 function load_left() {
@@ -47,6 +50,9 @@ $("#right_menu").html(data);
 
 function talent_show(cat) {
   var cat=cat;
+  // 지도 숨김 
+  $("#map").hide();
+  $("#top_banner").show();
  $.post("http://gallerybear.com/talent_list_app.php",
    {
     cat:cat
@@ -62,6 +68,9 @@ $("#company_list").html(data);
 
 function freeboard_show(cat) {
   var cat=cat;
+   $("#map").hide();
+  $("#top_banner").show();
+  $("#top_banner").html("freeboard");
  $.post("http://gallerybear.com/freeboard_list_app.php",
    {
     cat:cat
@@ -77,6 +86,9 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 function parade_show(cat) {
   var cat=cat;
+   $("#map").hide();
+  $("#top_banner").show();
+  $("#top_banner").html("freeboard");
  $.post("http://gallerybear.com/parade_list_app.php",
    {
     cat:cat
@@ -92,6 +104,9 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 function chat_job_show(cat) {
   var cat=cat;
+   $("#map").hide();
+  $("#top_banner").show();
+  $("#top_banner").html("freeboard");
  $.post("http://gallerybear.com/chat_job_app.php",
    {
     sub_code:cat
@@ -106,6 +121,9 @@ UIkit.offcanvas.hide('#offcanvas-left');
 }
 
 function chat_show() {
+    $("#map").hide();
+  $("#top_banner").show();
+ 
    $.post("http://gallerybear.com/chat_app.php",
    {
     
@@ -119,6 +137,9 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 }
 function friend_show() {
+    $("#map").hide();
+  $("#top_banner").show();
+ 
    $.post("http://gallerybear.com/around_list_app.php",
    {
     
@@ -134,6 +155,9 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 function global_show(sub_code) {
   var sub_code=sub_code;
+   $("#map").hide();
+  $("#top_banner").show();
+ 
    $.post("http://gallerybear.com/global_list_app.php",
    {
     sub_code:sub_code
@@ -149,6 +173,9 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 function premium_show(sub_code) {
   var sub_code=sub_code;
+   $("#map").hide();
+  $("#top_banner").show();
+ 
   if (sub_code==1) {
     var url="http://gallerybear.com/premium1_app.php";
   }
@@ -220,7 +247,8 @@ function map_show(kind_no) {
 
 $("#company_list").html(data);
 $("#map").show();
-
+$("#top_banner").hide();
+ 
    });
 }
 // 모달 호출 
@@ -250,11 +278,9 @@ $("#modal_contents").html(data);
 
 var modal = UIkit.modal("#contents_uk_modal");
 
-if ( modal.isActive() ) {
-    modal.hide();
-} else {
+
     modal.show();
-}
+
  jQuery("#modal_title").html(menu);
 }
 
@@ -307,4 +333,20 @@ if ( modal.isActive() ) {
 }
  
 
+}
+
+function zzim_member(uid) {
+ 
+  var uid2=uid;
+  console.log(memberuid+" "+uid2);
+   $.post("http://gallerybear.com/add_zzim.php",
+   {
+    uid:memberuid,
+    uid2:uid2
+   },
+   function(data){
+      
+     alert_msg("member","member picked member !");
+    
+   });
 }

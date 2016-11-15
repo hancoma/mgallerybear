@@ -1,10 +1,21 @@
+// 로그아웃
+function logout() {
+  window.localStorage.removeItem("user_id");
+  window.localStorage.clear();
+  user_id=null;
+  memberuid=null;
+   location.replace('login.html') ;
+
+}
 // 내 정보 보기
 function view_mypage() {
+
   var uuid=device.uuid;
  
     $.post("http://gallerybear.com/my_info_app.php",
    {
-    uuid:uuid
+    uuid:uuid,
+    memberuid:memberuid
     
        },
    function(data){
@@ -33,7 +44,8 @@ function view_msg() {
  
     $.post("http://gallerybear.com/my_message_app.php",
    {
-    uuid:uuid
+    uuid:uuid,
+    memberuid:memberuid
     
        },
    function(data){
@@ -60,7 +72,8 @@ function view_view_list() {
  
     $.post("http://gallerybear.com/my_view_list_app.php",
    {
-    uuid:uuid
+    uuid:uuid,
+    memberuid:memberuid
     
        },
    function(data){
@@ -68,11 +81,8 @@ function view_view_list() {
   UIkit.offcanvas.hide('#offcanvas-right');
 var modal = UIkit.modal("#mypage_uk_modal");
 
-if ( modal.isActive() ) {
-    modal.hide();
-} else {
+
     modal.show();
-}
  
 $("#mypage_modal_title").html("VIEW LIST");
 $("#mypage_modal_contents").html(data);
@@ -81,12 +91,27 @@ $("#mypage_modal_contents").html(data);
 
 }
 
+
+function delete_view(no) {
+  var no=no;
+   $.post("http://gallerybear.com/delete_view.php",
+   {
+    no:no
+    
+       },
+   function(data){
+          if (data=="ok") {
+            view_view_list();
+          }
+   });
+}
 function view_picked_member() {
   var uuid=device.uuid;
  
     $.post("http://gallerybear.com/my_pickedmember_app.php",
    {
-    uuid:uuid
+    uuid:uuid,
+    memberuid:memberuid
     
        },
    function(data){
@@ -94,11 +119,8 @@ function view_picked_member() {
   UIkit.offcanvas.hide('#offcanvas-right');
 var modal = UIkit.modal("#mypage_uk_modal");
 
-if ( modal.isActive() ) {
-    modal.hide();
-} else {
+
     modal.show();
-}
  
 $("#mypage_modal_title").html("PICKED MEMBER LIST");
 $("#mypage_modal_contents").html(data);
@@ -106,6 +128,21 @@ $("#mypage_modal_contents").html(data);
    });
 
 }
+
+function delete_picked_member(no) {
+  var no=no;
+   $.post("http://gallerybear.com/delete_view.php",
+   {
+    no:no
+    
+       },
+   function(data){
+          if (data=="ok") {
+            view_picked_member();
+          }
+   });
+}
+
 
 
 function view_picked_me() {
@@ -121,17 +158,28 @@ function view_picked_me() {
   UIkit.offcanvas.hide('#offcanvas-right');
 var modal = UIkit.modal("#mypage_uk_modal");
 
-if ( modal.isActive() ) {
-    modal.hide();
-} else {
+
     modal.show();
-}
  
 $("#mypage_modal_title").html("PICKED ME");
 $("#mypage_modal_contents").html(data);
 
    });
 
+}
+
+function delete_picked_me(no) {
+  var no=no;
+   $.post("http://gallerybear.com/delete_view.php",
+   {
+    no:no
+    
+       },
+   function(data){
+          if (data=="ok") {
+            view_picked_me();
+          }
+   });
 }
 
 

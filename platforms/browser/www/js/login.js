@@ -38,46 +38,72 @@ var app = {
     // Update DOM on a Received Event
     receivedEvent: function(id) {
         var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
+      
 
         console.log('Received Event: ' + id);
         app.onmain();
     },
     onmain : function() {
-         setTimeout(function() {
-      startapp();
-      }, 1000);
+       
     }
 };
 
-function startapp() {
-    var user_id = window.localStorage.getItem("user_id");
-    if(!user_id) {
-        console.log("로그인 해주세요.");
-    location.replace('login.html') ;
-    } else {
-        console.log("로그인 되었음.");
-    location.replace('main.html') ;
+
+
+
+
+$("#login_btn").click(
+    function() {
+    var user_id=$("#user_id").val();
+    var password=$("#password").val();
+    if (!user_id) {
+        alert_msg("LOGIN","plz user id"); 
         
+        exit;
     }
-}
+    if (!password) {
+        alert_msg("LOGIN","plz PASSWORD"); 
+      
+        exit;
+    }
+    login_press(user_id,password);
 
-// msg 
-function alertDismissed() {
-    // do something
-}
+    })
 
-function alert_msg(title,msg) {
-    var title=title;
-    var msg=msg;
-   navigator.notification.alert(
-    msg,  // message
-    alertDismissed,         // callback
-    title,            // title
-    '확인'                  // buttonName
-);
+function login_press(user_id,password) {
+    var user_id=user_id;
+    var password=password;
+
+     $.post("http://gallerybear.com/login_check.php",
+   {
+    user_id:user_id,
+    password:password
+    
+       },
+   function(data){
+     console.log(data);
+    if (data=="ok"){
+   
+    alert_msg("LOGIN","로그인 되었습니다.");
+    // 회원 memberuid 가져오기
+        window.localStorage.setItem("user_id", user_id);
+        user_id = window.localStorage.getItem("user_id");
+        console.log(user_id);
+               $.post("http://gallerybear.com/login_check_uid.php",
+               {
+                user_id:user_id
+                   },
+               function(data){
+                console.log(data);
+                window.localStorage.setItem("memberuid", data);
+                 location.replace('main.html') ;
+               });
+          
+
+
+    } else {
+ alert_msg("LOGIN",data);
+
+    } 
+   });
 }

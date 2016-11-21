@@ -19,7 +19,21 @@ $("#chat_body").html(data);
 }
 function save_chat() {
 	var room_no=$("#room_no").val();
-	console.log(no);
 	var chat_msg=$("#chat_msg").val();
-	console.log(chat_msg);
+	if (!chat_msg){
+		alert_msg("msg","no comment !!");
+		exit;
+	}
+
+		$.post("http://gallerybear.com/chat_save_app.php",
+   {
+   	room_no:room_no,
+   	memberuid:memberuid,
+   	chat_msg:chat_msg
+    
+       },
+   function(data){
+	open_chat(room_no);
+	$("#chat_msg").val('');
+   });
 }

@@ -65,6 +65,30 @@ $("#mypage_modal_contents").html(data);
    });
 
 }
+function join_msg_box(room_no,by_uid) {
+  var room_no=room_no;
+  var by_uid=by_uid;
+  console.log(room_no+" "+memberuid);
+
+
+    $.post("http://gallerybear.com/my_message_room_app.php",
+   {
+    room_no:room_no,
+    memberuid:memberuid,
+    by_uid:by_uid
+    
+       },
+   function(data){
+
+  var modal = UIkit.modal("#mypage_uk_modal");
+
+    modal.show();
+ 
+$("#mypage_modal_title").html("MESSAGE ROOM");
+$("#mypage_modal_contents").html(data);
+
+  });
+}
 
 
 function view_view_list() {

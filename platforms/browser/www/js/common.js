@@ -351,3 +351,19 @@ function zzim_member(uid) {
     
    });
 }
+function msg_send(uid,msg) {
+  var my_uid=memberuid;
+  var by_uid=uid;
+  var msg=msg;
+    $.post("http://gallerybear.com/msg_save_app.php",
+   {
+    my_uid:my_uid,
+    by_uid:by_uid,
+    msg:msg
+   },
+   function(data){
+      
+     alert_msg("member","SEND MESSAGE");
+    
+   });
+}

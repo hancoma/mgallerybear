@@ -51,6 +51,21 @@ var app = {
 
 
 
+$("#find_pw_btn").click(
+    function() {
+
+        var modal = UIkit.modal("#find_pw_uk_modal",{center: true});
+           modal.show();
+
+
+    })
+$("#find_pw_submit").click(
+    function() {
+        var email=$("#email").val()
+        alert_msg("MESSAGE",email+" send new password");
+        var modal = UIkit.modal("#find_pw_uk_modal");
+           modal.hide();
+    })
 
 $("#login_btn").click(
     function() {

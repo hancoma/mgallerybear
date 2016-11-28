@@ -57,6 +57,8 @@ if (add_mode=="talent") {
      freeboard_show(add_category);
   } else if (add_mode=="parade") {
     parade_show(add_category); 
+  } else if (add_mode=="profile") {
+    view_photo_upload();
   }
 
  var modal = UIkit.modal("#add_contents_uk_modal");

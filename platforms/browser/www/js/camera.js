@@ -6,7 +6,12 @@ function getImage(cat,mode) {
     add_mode=mode;
     if (add_mode=="freeboard") {
     add_contents=$("#freeboard_contents").val();
+    } else if (add_mode=="parade")
+    {
+         add_contents=$("#parade_contents").val();
     }
+
+
         console.log("camera"+cat + "mode "+add_mode+ " contents "+ add_contents);
         // Retrieve image file location from specified source
         navigator.camera.getPicture(uploadPhoto, function(message) {
@@ -50,6 +55,10 @@ if (add_mode=="talent") {
   } else if (add_mode=="freeboard") {
 
      freeboard_show(add_category);
+  } else if (add_mode=="parade") {
+    parade_show(add_category); 
+  } else if (add_mode=="profile") {
+    view_photo_upload();
   }
 
  var modal = UIkit.modal("#add_contents_uk_modal");

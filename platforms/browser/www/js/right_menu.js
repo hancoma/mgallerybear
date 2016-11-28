@@ -212,7 +212,8 @@ function view_photo_upload() {
  
     $.post("http://gallerybear.com/my_photoupload_app.php",
    {
-    uuid:uuid
+    uuid:uuid,
+    memberuid:memberuid
     
        },
    function(data){
@@ -220,11 +221,9 @@ function view_photo_upload() {
   UIkit.offcanvas.hide('#offcanvas-right');
 var modal = UIkit.modal("#mypage_uk_modal");
 
-if ( modal.isActive() ) {
-    modal.hide();
-} else {
+
     modal.show();
-}
+
  
 $("#mypage_modal_title").html("PHOTO UPLOAD");
 $("#mypage_modal_contents").html(data);

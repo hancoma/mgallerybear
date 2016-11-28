@@ -1,9 +1,6 @@
 function open_chat (no) {
 
-	var modal = UIkit.modal("#modal_chat");
 
-
-    modal.show();
 
 
    var no=no;
@@ -16,8 +13,15 @@ function open_chat (no) {
 $("#chat_body").html(data);
    });
  	$("#room_no").val(no);
+
+    var modal = UIkit.modal("#modal_chat", {center: true});
+
+
+    modal.show();
+
 }
 function save_chat() {
+  console.log(memberuid);
 	var room_no=$("#room_no").val();
 	var chat_msg=$("#chat_msg").val();
 	if (!chat_msg){
@@ -36,4 +40,8 @@ function save_chat() {
 	open_chat(room_no);
 	$("#chat_msg").val('');
    });
+}
+function gotop() {
+  console.log("top");
+   
 }

@@ -367,3 +367,77 @@ function msg_send(uid,msg) {
     
    });
 }
+//  콘텐츠 등록 
+
+function add_talent(cat) {
+  var cat=cat;
+  console.log("category="+cat)
+    $.post("http://gallerybear.com/self_camera_app.php",
+   {
+    memberuid:memberuid,
+    cat:cat
+    
+       },
+   function(data){
+
+$("#add_modal_contents").html(data);
+
+   });
+$("#add_modal_title").html("UPLOAD SELF CAEMRA")
+
+var modal = UIkit.modal("#add_contents_uk_modal");
+
+
+    modal.show();
+
+
+}
+
+function add_freeboard(cat) {
+  var cat=cat;
+  console.log("category="+cat)
+    $.post("http://gallerybear.com/freeboard_app.php",
+   {
+    memberuid:memberuid,
+    cat:cat
+    
+       },
+   function(data){
+
+$("#add_modal_contents").html(data);
+
+   });
+$("#add_modal_title").html("WRITE FREEBOARD")
+
+var modal = UIkit.modal("#add_contents_uk_modal");
+
+
+    modal.show();
+
+
+}
+
+function add_parade(cat) {
+  var cat=cat;
+  console.log("category="+cat)
+    $.post("http://gallerybear.com/parade_app.php",
+   {
+    memberuid:memberuid,
+    cat:cat
+    
+       },
+   function(data){
+
+$("#add_modal_contents").html(data);
+
+   });
+$("#add_modal_title").html("WRITE LET'S DRIVE")
+
+var modal = UIkit.modal("#add_contents_uk_modal");
+
+
+    modal.show();
+
+
+}
+

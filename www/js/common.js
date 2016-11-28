@@ -441,3 +441,36 @@ var modal = UIkit.modal("#add_contents_uk_modal");
 
 }
 
+// 프로필 대표 사진 설정
+function file_check(no) {
+  var no=no;
+  console.log(no);
+  $.post("http://gallerybear.com/file_check_app.php",
+   {
+    memberuid:memberuid,
+    no:no
+    
+       },
+   function(data){
+
+    view_photo_upload();
+
+   });
+}
+
+// 프로필 대표 사진 설정
+function file_delete(no) {
+  var no=no;
+  console.log(no);
+  $.post("http://gallerybear.com/file_delete_app.php",
+   {
+    memberuid:memberuid,
+    no:no
+    
+       },
+   function(data){
+
+    view_photo_upload();
+
+   });
+}

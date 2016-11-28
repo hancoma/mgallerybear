@@ -154,6 +154,25 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 }
 
+function more_friend() {
+  var last_no=$("#last_no").val();
+  console.log(last_no);
+    $.post("http://gallerybear.com/around_list_app.php",
+   {
+    last_no:last_no
+    
+       },
+   function(data){
+
+$("#company_list").append(data);
+var obj = $("#member_list").offset();
+console.log("left: " + obj.left + "px, top: " + obj.top + "px");
+
+$("#member_list").css("margin-top", obj.top);
+   });
+
+}
+
 function global_show(sub_code) {
   var sub_code=sub_code;
    $("#map").hide();
@@ -171,6 +190,28 @@ UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
+
+function more_global(sub_code) {
+  var last_no=$("#last_no").val();
+  var sub_code=sub_code;
+  console.log(last_no);
+    $.post("http://gallerybear.com/global_list_app.php",
+   {
+    last_no:last_no,
+    sub_code:sub_code
+    
+       },
+   function(data){
+
+$("#company_list").append(data);
+var obj = $("#member_list").offset();
+console.log("left: " + obj.left + "px, top: " + obj.top + "px");
+
+$("#member_list").css("margin-top", obj.top);
+   });
+
+}
+
 
 function premium_show(sub_code) {
   var sub_code=sub_code;

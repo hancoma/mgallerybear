@@ -217,7 +217,7 @@ function premium_show(sub_code) {
   var sub_code=sub_code;
    $("#map").hide();
   $("#top_banner").show();
- 
+ 	console.log(sub_code);
   if (sub_code==1) {
     var url="http://gallerybear.com/premium1_app.php";
   }
@@ -243,6 +243,46 @@ UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
+
+function premium_search_show(sub_code,data1,data2,data3,data4) {
+  var sub_code=sub_code;
+	var data1=data1;
+  	var data2=data2;
+  	var data3=data3;
+  	var data4=data4;
+  console.log(data2);  
+  if (sub_code==1) {
+  	
+
+
+  	
+    var url="http://gallerybear.com/premium1_app.php";
+  }
+  if (sub_code==2) {
+    var url="http://gallerybear.com/premium2_app.php";
+  }
+  if (sub_code==3) {
+    var url="http://gallerybear.com/premium3_app.php";
+  }
+  if (sub_code==4) {
+    var url="http://gallerybear.com/premium4_app.php";
+  }
+
+   $.post(url,
+   {
+    data1:data1,
+    data2:data2,
+    data3:data3,
+    data4:data4    
+       },
+   function(data){
+
+$("#company_list").html(data);
+UIkit.offcanvas.hide('#offcanvas-left');
+   });
+
+}
+
 
 
 
@@ -515,3 +555,4 @@ function file_delete(no) {
 
    });
 }
+ 

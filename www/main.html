@@ -207,6 +207,7 @@ function initMap() {
   centerControlDiv.index = 1;
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(centerControlDiv);
  
+
 $.ajax({
  type: "GET",
  url: "http://gallerybear.com/shop_json_app.php",
@@ -253,6 +254,7 @@ var map2;
   controlUI.title = 'Click to recenter the map';
   controlDiv.appendChild(controlUI);
 
+
 $.post("http://gallerybear.com/map_kind_menu.php",
    {
   
@@ -268,8 +270,9 @@ $.post("http://gallerybear.com/map_kind_menu.php",
   
   controlText.style.paddingLeft = '5px';
   controlText.style.paddingRight = '5px';
-  controlText.innerHTML = map2;
+  controlText.innerHTML = "<a href=# onclick='add_shop()'>ADD MYSHOP</a>"+map2;
   controlUI.appendChild(controlText);
+ 
 
    });
    
@@ -283,7 +286,10 @@ $.post("http://gallerybear.com/map_kind_menu.php",
   });
     
 }
-
+function add_shop() {
+	console.log("상점등록");
+	var ref = cordova.InAppBrowser.open('http://map.pridebbs.com/index2.html', '_blank', 'location=no');
+}
 
 function marker_load() {
 

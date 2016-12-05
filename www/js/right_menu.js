@@ -329,6 +329,58 @@ $("#mypage_modal_contents").html(data);
 
 }
 
+function view_premium_service() {
+  var uuid=device.uuid;
+ 
+    $.post("http://gallerybear.com/premium_service_app.php",
+   {
+    uuid:uuid
+    
+       },
+   function(data){
+
+  UIkit.offcanvas.hide('#offcanvas-right');
+var modal = UIkit.modal("#mypage_uk_modal");
+
+if ( modal.isActive() ) {
+    modal.hide();
+} else {
+    modal.show();
+}
+ 
+$("#mypage_modal_title").html("premium service");
+$("#mypage_modal_contents").html(data);
+
+   });
+
+}
+
+
+function view_terms() {
+  var uuid=device.uuid;
+ 
+    $.post("http://gallerybear.com/term_app.php",
+   {
+    uuid:uuid
+    
+       },
+   function(data){
+
+  UIkit.offcanvas.hide('#offcanvas-right');
+var modal = UIkit.modal("#mypage_uk_modal");
+
+if ( modal.isActive() ) {
+    modal.hide();
+} else {
+    modal.show();
+}
+ 
+$("#mypage_modal_title").html("Terms and Conditions");
+$("#mypage_modal_contents").html(data);
+
+   });
+
+}
 function view_setup() {
   var uuid=device.uuid;
  

@@ -22,6 +22,7 @@ function save_freeboard_comment(no) {
 function save_parade_comment(no) {
 	var no=no;
 	var parade_comment=$("#parade_comment").val();
+  console.log("uid:"+memberuid);
 	  $.post("http://gallerybear.com/parade_comment_save.php",
    {
     no:no,

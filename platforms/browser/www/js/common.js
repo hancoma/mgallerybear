@@ -109,7 +109,8 @@ function chat_job_show(cat) {
   $("#top_banner").html("freeboard");
  $.post("http://gallerybear.com/chat_job_app.php",
    {
-    sub_code:cat
+    sub_code:cat,
+    memberuid:memberuid
     
        },
    function(data){
@@ -120,14 +121,34 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 }
 
+function chat_job_show2(cat) {
+  var cat=cat;
+   $("#map").hide();
+  $("#top_banner").show();
+  $("#top_banner").html("freeboard");
+ $.post("http://gallerybear.com/chat_job_app.php",
+   {
+    sub_code:cat,
+    memberuid:memberuid
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+
+   });
+
+}
+
 function chat_show() {
+    console.log(memberuid);
     $("#map").hide();
   $("#top_banner").show();
  
    $.post("http://gallerybear.com/chat_app.php",
    {
     
-    memebruid:memberuid
+    memberuid:memberuid
     
        },
    function(data){
@@ -137,6 +158,25 @@ UIkit.offcanvas.hide('#offcanvas-left');
    });
 
 }
+
+function chat_show2() {
+  console.log(memberuid);
+ 
+   $.post("http://gallerybear.com/chat_app.php",
+   {
+    
+    memberuid:memberuid
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+
+   });
+
+}
+
+
 function friend_show() {
     $("#map").hide();
   $("#top_banner").show();

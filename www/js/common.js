@@ -596,3 +596,34 @@ function file_delete(no) {
    });
 }
  
+function delete_contents(mode,no) {
+	var mode=mode;
+	var no=no;
+	console.log(mode+" "+no);
+	$.post("http://gallerybear.com/delete_contents_app.php",
+   {
+    mode:mode,
+    no:no
+    
+       },
+   function(data){
+   	var modal = UIkit.modal("#contents_uk_modal");
+   	if (mode=="freeboard") {
+   freeboard_show();
+   modal.hide();
+	} else if (mode=="parade") {
+	parade_show();
+   modal.hide();
+	}
+
+
+   });
+
+}
+
+// 게시물 삭제 처리
+function contents_delete() {
+		var mode=$("#mode").val();
+		var no=$("#no").val();
+		delete_contents(mode,no);
+	};

@@ -377,6 +377,7 @@ $("#top_banner").hide();
 function contents_modal_show(menu,no) {
     var menu=menu;
     var no=no;
+    console.log(menu+" "+no);
     if (menu=="talent") {
       var url="http://gallerybear.com/talent_info_modal_app.php";
     }
@@ -389,7 +390,8 @@ if (menu=="parade") {
 
      $.post(url,
    {
-    no:no
+    no:no,
+    memberuid:memberuid
     
        },
    function(data){
@@ -596,6 +598,35 @@ function file_delete(no) {
    });
 }
  
+ // 코멘트 삭제 
+ function delete_comment(mode,no,no2) {
+  var mode=mode;
+  var no=no;
+  var no2=no2;
+  console.log(mode+" "+no+" "+no2);
+  $.post("http://gallerybear.com/delete_comment_app.php",
+   {
+    mode:mode,
+    no:no
+    
+       },
+   function(data){
+    console.log(data+" "+mode);
+    var modal = UIkit.modal("#contents_uk_modal");
+    if (mode=="freeboard") {
+     contents_modal_show(mode,no2);
+
+  } else if (mode=="parade") {
+      contents_modal_show(mode,no2);
+  }
+
+
+   });
+
+}
+
+ // 게시물 삭제 
+
 function delete_contents(mode,no) {
 	var mode=mode;
 	var no=no;
@@ -614,7 +645,10 @@ function delete_contents(mode,no) {
 	} else if (mode=="parade") {
 	parade_show();
    modal.hide();
-	}
+	} else if (mode=="talent") {
+  talent_show();
+   modal.hide();
+  }
 
 
    });
@@ -627,3 +661,11 @@ function contents_delete() {
 		var no=$("#no").val();
 		delete_contents(mode,no);
 	};
+
+  function show_contents_modal() {
+    $("#contents_modal_btn").show();
+  }
+
+    function hide_contents_modal() {
+    $("#contents_modal_btn").hide();
+  }

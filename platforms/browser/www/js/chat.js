@@ -1,12 +1,15 @@
+
 function open_chat (no) {
 
 
 
 
    var no=no;
+   console.log(memberuid);
  $.post("http://gallerybear.com/chat_list_app.php",
    {
-    no:no
+    no:no,
+    memberuid:memberuid
     
        },
    function(data){
@@ -179,3 +182,82 @@ make_chat_close();
    });
    
   }
+
+// 대화삭제 
+ // 코멘트 삭제 
+ function delete_chat_list(no,room_no) {
+  var no=no;
+  var room_no=room_no;
+  console.log(no+" "+room_no);
+  $.post("http://gallerybear.com/delete_chat_list_app.php",
+   {
+    
+    no:no
+    
+       },
+   function(data){
+      open_chat(room_no);
+
+
+   });
+
+}
+
+// 대화갱신
+
+ function check_new_chat() {
+  var last_no=$("#last_no").val();
+  var room_no=$("#room_no").val();
+  var check_chat=$("#check_chat").val();
+  $("#check_chat").val("t");
+  if (check_chat=="t") {
+    exit;
+  
+  }
+  console.log(last_no+" "+room_no+" "+check_chat); 
+   $.post("http://gallerybear.com/check_new_chat_no_app.php",
+   {
+    
+    last_no:last_no,
+    room_no:room_no
+    
+       },
+   function(data){
+     var data=data;
+     if (data) {
+      $("#last_no").val(data);
+      $("#check_chat").val("t");
+      console.log(data);
+       reload_chat(room_no,last_no);
+     } else {
+       $("#check_chat").val("f");
+     }
+
+
+   });
+
+}
+
+// 대화 내용 경신
+function reload_chat(room_no,last_no) {
+  var room_no=room_no;
+  var last_no=last_no;
+  console.log('last_no'+last_no);
+   $.post("http://gallerybear.com/check_new_chat_app.php",
+   {
+    
+    last_no:last_no,
+    room_no:room_no,
+    memberuid:memberuid
+    
+       },
+   function(data){
+     if (data) {
+      
+        $("#chat_body").prepend(data); 
+
+     }
+ $("#check_chat").val("f"); 
+
+   });
+}

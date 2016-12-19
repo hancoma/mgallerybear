@@ -1,4 +1,18 @@
-
+function open_chat_room (no) {
+$("#chat_room_modal").addClass('active');
+  var no=no;
+   console.log(memberuid);
+ $.post("http://gallerybear.com/chat_list_app.php",
+   {
+    no:no,
+    memberuid:memberuid
+    
+       },
+   function(data){
+$("#chat_body").html(data);
+   });
+  $("#room_no").val(no);
+}
 function open_chat (no) {
 
 
@@ -17,7 +31,7 @@ $("#chat_body").html(data);
    });
  	$("#room_no").val(no);
 
-    var modal = UIkit.modal("#modal_chat", {center: true});
+    var modal = UIkit.modal("#modal_chat", {center: true,minScrollHeight:150});
 
 
     modal.show();
@@ -40,7 +54,7 @@ function save_chat() {
     
        },
    function(data){
-	open_chat(room_no);
+	//open_chat(room_no);
 	$("#chat_msg").val('');
    });
 }

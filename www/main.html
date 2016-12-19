@@ -110,25 +110,35 @@
                                     </div>
                                 </div>
                             </div>
-<div id="modal_chat" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll; ">
-                            <div class="uk-modal-dialog uk-modal-dialog-large">
-                                <button type="button" class="uk-modal-close uk-close"></button>
-                                <h1>CHATTING ROOM</h1>
-                                
-                   
-                                <div class="uk-overflow-container" id="chat_body" style="max-height: 464px;">
-                                    
-                                </div>
-                               
-                                <p>
-                                  <div class="input-group margin-bottom-20">
-        <span class="input-group-addon"><i class="fa fa-edit"></i></span>
-        <input type="hidden" name="room_no" value="" id="room_no">
-        <input type="text" class="form-control" placeholder="MESSAGE" id="chat_msg" onclick="gotop();">
-      </div><a href="#" class="uk-width-1-1 uk-button uk-button-success" id="send_btn" onclick="save_chat();">SEND</a>
-                                </p>
-                            </div>
-                        </div>
+
+<div id="chat_room_modal" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" href="#chat_room_modal"></a>
+    <h1 class="title">CHAT ROOM</h1>
+  </header>
+
+  <div class="content">
+    <p id="chat_body">
+  
+    
+    </p>
+
+</div><nav class="bar bar-tab">
+  <div class="uk-grid" style="line-height: 40px; width:100%;">
+    <div class="uk-width-8-10 uk-text-center">
+ <input type="hidden" name="room_no" value="" id="room_no">
+        <input type="text" class="form-control" placeholder="MESSAGE" id="chat_msg" style="margin-left:10px;" onclick="gotop();">
+        </div>
+        <div class="uk-width-2-10 uk-text-left">
+      <a href="#" class="uk-button uk-button-success" id="send_btn" onclick="save_chat();">SEND</a>
+      </div>
+  </div>
+  </nav>
+  </div>
+
+
+
+
 <div id="member_info_modal" class="modal">
   <header class="bar bar-nav">
     <a class="icon icon-close pull-right" href="#member_info_modal"></a>

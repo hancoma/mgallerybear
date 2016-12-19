@@ -130,7 +130,7 @@ function make_room() {
     $.post("http://gallerybear.com/chat_app.php",
    {
     
-    memebruid:memberuid
+    memberuid:memberuid
     
        },
    function(data){

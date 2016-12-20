@@ -10,8 +10,20 @@ $("#chat_room_modal").addClass('active');
        },
    function(data){
 $("#chat_body").html(data);
+console.log(data);
+chat_page_top();
    });
   $("#room_no").val(no);
+
+	
+
+}
+function chat_page_top() {
+	$(document).ready(function(){
+	htop=$('#chat_body').height();
+	console.log("h"+htop);
+	$('.content').scrollTop(htop); 
+	});
 }
 function open_chat (no) {
 
@@ -56,6 +68,7 @@ function save_chat() {
    function(data){
 	//open_chat(room_no);
 	$("#chat_msg").val('');
+
    });
 }
 function gotop() {
@@ -223,6 +236,7 @@ make_chat_close();
   var last_no=$("#last_no").val();
   var room_no=$("#room_no").val();
   var check_chat=$("#check_chat").val();
+
   $("#check_chat").val("t");
   if (check_chat=="t") {
     exit;
@@ -237,11 +251,13 @@ make_chat_close();
     
        },
    function(data){
+   	console.log(data);
      var data=data;
+
      if (data) {
       $("#last_no").val(data);
       $("#check_chat").val("t");
-      console.log(data);
+    
        reload_chat(room_no,last_no);
      } else {
        $("#check_chat").val("f");
@@ -268,10 +284,12 @@ function reload_chat(room_no,last_no) {
    function(data){
      if (data) {
       
-        $("#chat_body").prepend(data); 
+        $("#chat_body").append(data); 
 
      }
  $("#check_chat").val("f"); 
+ htop=$('#chat_body').height();
+$('.content').scrollTop(htop);
 
    });
 }

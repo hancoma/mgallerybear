@@ -1,7 +1,7 @@
 var user_id = window.localStorage.getItem("user_id");
 var memberuid = window.localStorage.getItem("memberuid");
 var menu;
-
+var chat_check_id;
 function open_left() {
     UIkit.offcanvas.show('#offcanvas-left');
     load_left();

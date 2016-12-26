@@ -355,5 +355,6 @@ function exit_chat_room(button) {
     }else{
         $("#chat_room_modal").removeClass('active');
         menu="chat";
+        clearInterval(chat_check_id);
     }
 }

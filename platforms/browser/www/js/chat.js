@@ -1,4 +1,5 @@
 function open_chat_room (no) {
+   menu="chat_open";
 $("#chat_room_modal").addClass('active');
   var no=no;
    console.log(memberuid);
@@ -238,11 +239,12 @@ make_chat_close();
   var check_chat=$("#check_chat").val();
 
   $("#check_chat").val("t");
+  console.log(last_no+" "+room_no+" "+check_chat); 
   if (check_chat=="t") {
     exit;
   
   }
-  console.log(last_no+" "+room_no+" "+check_chat); 
+  
    $.post("http://gallerybear.com/check_new_chat_no_app.php",
    {
     
@@ -251,14 +253,14 @@ make_chat_close();
     
        },
    function(data){
-   	console.log(data);
+   	console.log("저장 "+data);
      var data=data;
 
      if (data) {
       $("#last_no").val(data);
       $("#check_chat").val("t");
     
-       reload_chat(room_no,last_no);
+      re_open_chat_room();
      } else {
        $("#check_chat").val("f");
      }
@@ -292,4 +294,66 @@ function reload_chat(room_no,last_no) {
 $('.content').scrollTop(htop);
 
    });
+}
+
+
+function re_open_chat_room () {
+  var no=$("#room_no").val();
+
+   console.log(memberuid+" room_no  "+no);
+ $.post("http://gallerybear.com/chat_list_app.php",
+   {
+    no:no,
+    memberuid:memberuid
+    
+       },
+   function(data){
+    console.log(data);
+$("#chat_body").html(data);
+
+chat_page_top();
+   });
+  $("#room_no").val(no);
+
+  
+$("#check_chat").val("f");
+}
+
+// 대화갱신
+function sc_size_scheck() {
+
+var top=$("#chat_body").offset().top;
+var height=$("#chat_body").height();
+var height2=$("#chat_room_modal").height();
+var last_no=$("#last_no").val();
+var postop=(top*-1)+height2-90;
+var var1=height-postop;
+console.log(last_no);
+console.log("top"+postop+"height"+height+"cheight"+height2+"var1"+var1);
+if (height<height2) {
+check_new_chat();
+} else if (var1<190) {
+  check_new_chat();
+} else if (last_no==0) {
+  check_new_chat();
+}
+
+
+
+}
+
+
+
+function close_chat_room() {
+  navigator.notification.confirm("대화방을 나가시겠습니까 ?", exit_chat_room, "대화방", "예,아니요"); 
+    
+}
+
+function exit_chat_room(button) {
+    if(button==2){//If User selected No, then we just do nothing
+        return;
+    }else{
+        $("#chat_room_modal").removeClass('active');
+        menu="chat";
+    }
 }

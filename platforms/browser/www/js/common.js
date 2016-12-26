@@ -1,5 +1,6 @@
 var user_id = window.localStorage.getItem("user_id");
 var memberuid = window.localStorage.getItem("memberuid");
+var menu;
 
 function open_left() {
     UIkit.offcanvas.show('#offcanvas-left');
@@ -100,6 +101,10 @@ $("#company_list").html(data);
 UIkit.offcanvas.hide('#offcanvas-left');
    });
 
+}
+function open_url(url) {
+  var url=url
+  var ref = cordova.InAppBrowser.open(url, '_self', 'location=no');
 }
 
 function chat_job_show(cat) {
@@ -669,3 +674,25 @@ function contents_delete() {
     function hide_contents_modal() {
     $("#contents_modal_btn").hide();
   }
+
+
+// 종류
+function exit_show() {
+navigator.notification.confirm("종료하시게습니까? ", onConfirm, "Confirmation", "Yes,No"); 
+}
+
+function onConfirm(button) {
+    if(button==2){//If User selected No, then we just do nothing
+        return;
+    }else{
+        navigator.app.exitApp();// Otherwise we quit the app.
+    }
+}
+
+
+  function onBackKeyDown() {
+    console.log("뒤로가기 "+menu);
+    if (menu=="chat_open") {
+      close_chat_room(); //대화방 나가기 
+      
+    }    }

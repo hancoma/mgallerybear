@@ -1,6 +1,7 @@
 var add_category;
 var add_mode;
 var add_contents;
+var add_room_no;
 function getImage(cat,mode) {
     add_category=cat;
     add_mode=mode;
@@ -9,6 +10,8 @@ function getImage(cat,mode) {
     } else if (add_mode=="parade")
     {
          add_contents=$("#parade_contents").val();
+    } else if (add_mode=="chat"){
+        add_room_no=$("#room_no").val();
     }
 
 
@@ -36,6 +39,7 @@ sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
         params.mode=add_mode;
         params.memberuid=memberuid;
         params.contents=add_contents;
+        params.room_no=add_room_no;
      
 
         options.params = params;

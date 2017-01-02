@@ -52,6 +52,7 @@ $("#right_menu").html(data);
 function talent_show(cat) {
   var cat=cat;
   // 지도 숨김 
+  var mode="talent";
   $("#map").hide();
   $("#top_banner").show();
  $.post("http://gallerybear.com/talent_list_app.php",
@@ -185,7 +186,7 @@ $("#company_list").html(data);
 function friend_show() {
     $("#map").hide();
   $("#top_banner").show();
- 
+ mode="around";
    $.post("http://gallerybear.com/around_list_app.php",
    {
     
@@ -222,7 +223,7 @@ function global_show(sub_code) {
   var sub_code=sub_code;
    $("#map").hide();
   $("#top_banner").show();
- 
+  mode="global";
    $.post("http://gallerybear.com/global_list_app.php",
    {
     sub_code:sub_code
@@ -236,9 +237,9 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 }
 
-function more_global(sub_code) {
+function more_global() {
   var last_no=$("#last_no").val();
-  var sub_code=sub_code;
+  var sub_code=$("#sub_code").val();;
   console.log(last_no);
     $.post("http://gallerybear.com/global_list_app.php",
    {
@@ -378,6 +379,22 @@ $("#top_banner").hide();
  
    });
 }
+
+function more_map_api(last_no) {
+  var last_no=last_no;
+  var url="http://gallerybear.com/map_api_more_app.php";
+
+   $.post(url,
+   {
+    last_no:last_no
+    
+       },
+   function(data){
+$("#shop_list_body").append(data);
+ 
+   });
+}
+
 // 모달 호출 
 function contents_modal_show(menu,no) {
     var menu=menu;

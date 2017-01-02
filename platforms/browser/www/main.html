@@ -240,7 +240,19 @@ var chicago = {lat: 41.85, lng: -87.65};
     var data_point_x=new Array();
     var data_point_y=new Array();
 
-   
+   $("#company_list").bind("touchend",function(e){
+      if (mode=="around") {
+ more_friend();
+      } else if (mode=="global") { 
+more_global();
+      }else {
+      var last_no=$("#last_no").val();
+      console.log(last_no);
+      more_map_api(last_no);
+    }
+
+});   
+
      initMap();
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {

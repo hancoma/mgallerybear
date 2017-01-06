@@ -44,20 +44,10 @@ var app = {
         app.onmain();
     },
     onmain : function() {
-   
+    main_show();
    
     
 }
 };
 
-var mode="shop_list";
-
- $.post("http://gallerybear.com/map_api_app.php",
-   {
-    mode:mode
-    
-       },
-   function(data){
-$("#company_list").html(data);
-   });
 

@@ -48,7 +48,19 @@ function load_right() {
 $("#right_menu").html(data);
    });
 }
+function main_show() {
+  mode="main";
 
+ $.post("http://gallerybear.com/map_api_app.php",
+   {
+    mode:mode
+    
+       },
+   function(data){
+$("#company_list").html(data);
+   });
+
+}
 function talent_show(cat) {
   var cat=cat;
   // 지도 숨김 

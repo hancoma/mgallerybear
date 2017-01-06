@@ -32,9 +32,9 @@
 </header>
 <div id="top_banner" style="height: 50px; display:none;">
 </div>
-<div id="map" data-uk-grid>map loading...
+<div id="map" data-uk-grid style="height:30%;">map loading...
 </div>
-<div id="company_list" style="overflow-y: scroll; width:100%; height:100%;  ">
+<div id="company_list" style="overflow-y: scroll; width:100%; height:70%; margin-bottom:50px; ">
 </div>
 
 <div id="add_contents_uk_modal" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
@@ -233,22 +233,28 @@
     var data_app;
      var company_name;
     var map_kind;
-var chicago = {lat: 41.85, lng: -87.65}; 
+    var chicago = {lat: 41.85, lng: -87.65}; 
     var markers = new Array();
     var data_company=new Array();
     var data_no=new Array();
     var data_point_x=new Array();
     var data_point_y=new Array();
 
+$("#company_list").scroll( function() {
+          console.log("스크롤");
+        } );
+
    $("#company_list").bind("touchend",function(e){
+    var height=$("#company_list").height();
+    console.log(height);
       if (mode=="around") {
  more_friend();
       } else if (mode=="global") { 
 more_global();
-      }else {
+      } else {
       var last_no=$("#last_no").val();
-      console.log(last_no);
-      more_map_api(last_no);
+      //console.log(last_no);
+      //more_map_api(last_no);
     }
 
 });   

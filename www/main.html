@@ -34,8 +34,13 @@
 </div>
 <div id="map" data-uk-grid style="height:30%;">map loading...
 </div>
-<div id="company_list" style="overflow-y: scroll; width:100%; height:70%; margin-bottom:50px; ">
+<div id="company_list" style="overflow-y: scroll; width:100%; height:70%;  ">
 </div>
+<div id="modal-spinner" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
+                            <div class="uk-modal-dialog" tabindex="">
+                                <div class="uk-modal-spinner"></div>
+                            </div>
+                        </div>
 
 <div id="add_contents_uk_modal" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
                                 <div class="uk-modal-dialog">
@@ -241,23 +246,35 @@
     var data_point_y=new Array();
 
 $("#company_list").scroll( function() {
-          console.log("스크롤");
+          var body_height=$("body").height();
+          if (mode=="main") {
+          console.log("지도 업체 스크롤");
+          var height=$("#shop_list_body").height();
+          var top=$("#shop_list_body").offset().top;
+          var map_height=$("#map").height();
+          console.log(height+" "+body_height+" "+top+" "+map_height);
+          var var1=body_height+(top*-1)+50;
+          var var2=height-var1;
+          console.log(var1+" "+var2);
+          
+          if (100>=var2 && 99<=var2) {
+            UIkit.modal("#modal-spinner").show();
+            var last_no=$("#last_no").val();
+            more_map_api(last_no);
+             $("#shop_list_body").ready( function() {
+            UIkit.modal("#modal-spinner").hide();
+          });
+
+            
+
+          }
+        }
+
         } );
 
-   $("#company_list").bind("touchend",function(e){
-    var height=$("#company_list").height();
-    console.log(height);
-      if (mode=="around") {
- more_friend();
-      } else if (mode=="global") { 
-more_global();
-      } else {
-      var last_no=$("#last_no").val();
-      //console.log(last_no);
-      //more_map_api(last_no);
-    }
-
-});   
+// more_friend();
+//more_global();
+  
 
      initMap();
 function initMap() {

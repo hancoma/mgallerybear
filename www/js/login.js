@@ -149,8 +149,11 @@ $("#join_submit").click(
     function() {
         var nick=$("#nick").val();
         var email=$("#email").val();
-        
-        
+        var kg=$("#kg").val();
+        var age=$("#age").val();
+        var country=$("#country").val();
+        var job=$("#job").val();
+        console.log(country);
         if (!nick) {
         alert_msg("join","nick name plz");
             return;
@@ -159,5 +162,44 @@ $("#join_submit").click(
         alert_msg("join","email plz");
             return;
         }
+
+         if (!kg) {
+        alert_msg("join","kg plz");
+            return;
+        }
+        if (!age) {
+        alert_msg("join","age plz");
+            return;
+        }
+        if (!country) {
+            alert_msg("join","country not selected");
+            return;
+        }
+        if (!job) {
+            alert_msg("join","job not selected");
+            return;
+        }
+
+        
+    var params = jQuery("#formname1").serialize(); // serialize() : 입력된 모든Element(을)를 문자열의 데이터에 serialize 한다.
+    jQuery.ajax({
+        url: 'http://m.gallerybear.com/member_save.php',
+        type: 'POST',
+        data:params,
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+        dataType: 'html',
+        success: function (result) {
+            if (result){
+                alert_msg("join",result);
+
+                    UIkit.modal("#join_uk_modal",{center: true}).hide();
+            }
+        }
+    });
+
+
+        
+        
+
         
     });

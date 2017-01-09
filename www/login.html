@@ -61,9 +61,28 @@
   </div>
   <span class="btn btn-positive btn-block" id="login_btn">LOGIN</span>
   <span class="btn btn-negative btn-block" id="find_pw_btn">FIND PASS</span>
+  <span class="btn btn-negative btn-block" id="join_btn">JOIN</span>
 </form>
     </div>
-  
+
+  <div id="join_uk_modal" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
+                                <div class="uk-modal-dialog">
+                                    <button type="button" class="uk-modal-close uk-close"></button>
+                                    <div class="uk-modal-header">
+                                        <h2 id="join_modal_title">MEMBER JOIN</h2>
+                                    </div>
+
+                                    <p id="join_modal_contents">
+      
+                                    </p>
+                                    <div class="uk-modal-footer uk-text-right" id="join_modal_btn">
+                                        <button type="button" class="uk-button uk-modal-close">Cancel</button>
+                                        <span type="button" class="uk-button uk-button-primary" id="join_submit">SAVE</span>
+                                    </div>
+                                </div>
+                            </div>
+
+
 
 <div id="find_pw_uk_modal" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
                                 <div class="uk-modal-dialog">
@@ -71,6 +90,7 @@
                                     <div class="uk-modal-header">
                                         <h2 id="member_modal_title">PASSWORD FIND</h2>
                                     </div>
+
                                     <p id="member_modal_contents">
       <form class="input-group">
   <div class="input-row">

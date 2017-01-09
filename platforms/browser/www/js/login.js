@@ -122,3 +122,42 @@ function login_press(user_id,password) {
     } 
    });
 }
+
+$("#join_btn").click(
+    function() {
+
+        var modal = UIkit.modal("#join_uk_modal",{center: true});
+           modal.show();
+
+
+ $.post("http://gallerybear.com/join_app_form.php",
+   {
+ 
+    
+       },
+   function(data){
+
+  
+
+$("#join_modal_contents").html(data);
+
+   });
+
+    })
+
+$("#join_submit").click(
+    function() {
+        var nick=$("#nick").val();
+        var email=$("#email").val();
+        
+        
+        if (!nick) {
+        alert_msg("join","nick name plz");
+            return;
+        }
+         if (!email) {
+        alert_msg("join","email plz");
+            return;
+        }
+        
+    });

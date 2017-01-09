@@ -2,6 +2,8 @@
 function logout() {
   window.localStorage.removeItem("user_id");
   window.localStorage.clear();
+    window.localStorage.removeItem("memberuid");
+  window.localStorage.clear();
   user_id=null;
   memberuid=null;
    location.replace('login.html') ;

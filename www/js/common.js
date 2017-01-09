@@ -2,6 +2,10 @@ var user_id = window.localStorage.getItem("user_id");
 var memberuid = window.localStorage.getItem("memberuid");
 var menu;
 var chat_check_id;
+if (!memberuid) {
+  alert_msg("error","plz login");
+   location.replace('login.html') ;
+}
 function open_left() {
     UIkit.offcanvas.show('#offcanvas-left');
     load_left();
@@ -50,7 +54,7 @@ $("#right_menu").html(data);
 }
 function main_show() {
   mode="main";
-
+ $("#company_list").height("70%");
  $.post("http://gallerybear.com/map_api_app.php",
    {
     mode:mode
@@ -64,7 +68,8 @@ $("#company_list").html(data);
 function talent_show(cat) {
   var cat=cat;
   // 지도 숨김 
-  var mode="talent";
+  mode="self_camera";
+  $("#company_list").height("100%");
   $("#map").hide();
   $("#top_banner").show();
  $.post("http://gallerybear.com/talent_list_app.php",
@@ -82,6 +87,8 @@ $("#company_list").html(data);
 
 function freeboard_show(cat) {
   var cat=cat;
+    mode="freeboard";
+  $("#company_list").height("100%");
    $("#map").hide();
   $("#top_banner").show();
   $("#top_banner").html("freeboard");
@@ -100,6 +107,8 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 function parade_show(cat) {
   var cat=cat;
+     mode="letsdrive";
+  $("#company_list").height("100%");
    $("#map").hide();
   $("#top_banner").show();
   $("#top_banner").html("freeboard");
@@ -122,6 +131,8 @@ function open_url(url) {
 
 function chat_job_show(cat) {
   var cat=cat;
+   mode="chat";
+  $("#company_list").height("100%");
    $("#map").hide();
   $("#top_banner").show();
   $("#top_banner").html("freeboard");
@@ -141,6 +152,8 @@ UIkit.offcanvas.hide('#offcanvas-left');
 
 function chat_job_show2(cat) {
   var cat=cat;
+   mode="letsdrive";
+  $("#company_list").height("100%");
    $("#map").hide();
   $("#top_banner").show();
   $("#top_banner").html("freeboard");
@@ -199,6 +212,8 @@ function friend_show() {
     $("#map").hide();
   $("#top_banner").show();
  mode="around";
+
+  $("#company_list").height("100%");
    $.post("http://gallerybear.com/around_list_app.php",
    {
     
@@ -224,15 +239,15 @@ function more_friend() {
 
 $("#company_list").append(data);
 var obj = $("#member_list").offset();
-console.log("left: " + obj.left + "px, top: " + obj.top + "px");
 
-$("#member_list").css("margin-top", obj.top);
    });
 
 }
 
 function global_show(sub_code) {
   var sub_code=sub_code;
+   
+  $("#company_list").height("100%");
    $("#map").hide();
   $("#top_banner").show();
   mode="global";
@@ -253,7 +268,7 @@ function more_global() {
   var last_no=$("#last_no").val();
   var sub_code=$("#sub_code").val();;
   console.log(last_no);
-    $.post("http://gallerybear.com/global_list_app.php",
+    $.post("http://gallerybear.com/more_global_list_app.php",
    {
     last_no:last_no,
     sub_code:sub_code
@@ -265,7 +280,6 @@ $("#company_list").append(data);
 var obj = $("#member_list").offset();
 console.log("left: " + obj.left + "px, top: " + obj.top + "px");
 
-$("#member_list").css("margin-top", obj.top);
    });
 
 }
@@ -275,6 +289,8 @@ function premium_show(sub_code) {
   var sub_code=sub_code;
    $("#map").hide();
   $("#top_banner").show();
+   mode="premium";
+  $("#company_list").height("100%");
  	console.log(sub_code);
   if (sub_code==1) {
     var url="http://gallerybear.com/premium1_app.php";
@@ -376,7 +392,9 @@ function global_menu_show() {
 // 맵 보이기 
 function map_show(kind_no) {
   var kind_no=kind_no;
-  var url="http://gallerybear.com/map_kind_app.php";
+  mode="main";
+  $("#company_list").height("100%");
+  var url="http://gallerybear.com/map_api_app.php";
   UIkit.offcanvas.hide('#offcanvas-left');
    $.post(url,
    {

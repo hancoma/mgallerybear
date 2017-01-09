@@ -247,17 +247,19 @@
 
 $("#company_list").scroll( function() {
           var body_height=$("body").height();
+           console.log(mode);
           if (mode=="main") {
-          console.log("지도 업체 스크롤");
+         
           var height=$("#shop_list_body").height();
           var top=$("#shop_list_body").offset().top;
           var map_height=$("#map").height();
           console.log(height+" "+body_height+" "+top+" "+map_height);
           var var1=body_height+(top*-1)+50;
           var var2=height-var1;
+          var var3=(body_height*-1);
           console.log(var1+" "+var2);
           
-          if (100>=var2 && 99<=var2) {
+          if (body_height>=var2 && var3<=var2) {
             UIkit.modal("#modal-spinner").show();
             var last_no=$("#last_no").val();
             more_map_api(last_no);
@@ -268,6 +270,44 @@ $("#company_list").scroll( function() {
             
 
           }
+        } else if (mode=="around") {
+
+              var height=$("#member_list").height();
+          var top=$("#member_list").offset().top;
+          console.log(height+" "+body_height+" "+top);
+          var var1=body_height+(top*-1)+50;
+          var var2=height-var1;
+          var var3=(body_height*-1);
+          console.log(var1+" "+var2);
+          
+          if (0>=var2 && -50<=var2) {
+            UIkit.modal("#modal-spinner").show();
+            console.log("회원추가");
+            more_friend();
+             $("#member_list").ready( function() {
+            UIkit.modal("#modal-spinner").hide();
+          });
+
+        }
+        } else if (mode=="global") {
+
+              var height=$("#member_list").height();
+          var top=$("#member_list").offset().top;
+          console.log(height+" "+body_height+" "+top);
+          var var1=body_height+(top*-1)+50;
+          var var2=height-var1;
+          var var3=(body_height*-1);
+          console.log(var1+" "+var2);
+          
+          if (0>=var2 && -50<=var2) {
+            UIkit.modal("#modal-spinner").show();
+            console.log("회원추가2");
+            more_global();
+             $("#member_list").ready( function() {
+            UIkit.modal("#modal-spinner").hide();
+          });
+
+        }
         }
 
         } );

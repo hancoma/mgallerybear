@@ -743,3 +743,12 @@ function onConfirm(button) {
       close_chat_room(); //대화방 나가기 
       
     }    }
+// 지도 정보 
+
+      function geo_onSuccess(position) {
+        console.log(memberuid+'Latitude: '  + position.coords.latitude +'Longitude: ' + position.coords.longitude);
+    }
+ function geo_error(position) {
+        alert_msg('code: '    + error.code    + '\n' +
+              'No geo infomation');
+    }

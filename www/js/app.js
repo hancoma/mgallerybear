@@ -44,10 +44,13 @@ var app = {
         app.onmain();
     },
     onmain : function() {
+
     main_show();
-   
+
+     navigator.geolocation.getCurrentPosition(geo_onSuccess,geo_error);
     
 }
 };
+
 
 

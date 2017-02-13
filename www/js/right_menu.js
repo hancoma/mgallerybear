@@ -383,6 +383,33 @@ $("#mypage_modal_contents").html(data);
    });
 
 }
+function view_membershipwithdrawal() {
+   var uuid=device.uuid;
+ 
+    $.post("http://gallerybear.com/member_out.php",
+   {
+    uuid:uuid
+    
+       },
+   function(data){
+
+  UIkit.offcanvas.hide('#offcanvas-right');
+var modal = UIkit.modal("#mypage_uk_modal");
+
+if ( modal.isActive() ) {
+    modal.hide();
+} else {
+    modal.show();
+}
+ 
+$("#mypage_modal_title").html("Membership Withdrawal");
+$("#mypage_modal_contents").html(data);
+
+   });
+}
+
+
+
 function view_setup() {
   var uuid=device.uuid;
  

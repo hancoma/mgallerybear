@@ -4,7 +4,7 @@ var memberuid = window.localStorage.getItem("memberuid");
 
       function geo_onSuccess(position) {
         point_x=position.coords.latitude;
-        gapoint_y=position.coords.longitude;
+        point_y=position.coords.longitude;
         console.log(memberuid+'Latitude: '  + position.coords.latitude +'Longitude: ' + position.coords.longitude);
         save_gps(point_x,point_y);
         move_map(point_x,point_y);

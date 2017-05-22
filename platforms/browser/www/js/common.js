@@ -752,3 +752,13 @@ function onConfirm(button) {
         alert_msg('code: '    + error.code    + '\n' +
               'No geo infomation');
     }
+
+
+function open_ad () {
+
+$("#ad_center_modal").addClass('active');
+}
+
+function close_ad_center() {
+  $("#ad_center_modal").removeClass('active');
+}

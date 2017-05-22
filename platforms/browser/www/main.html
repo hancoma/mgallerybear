@@ -27,7 +27,8 @@
 <body>
 <header class="bar bar-nav">
  <a class="icon icon-left-nav pull-left"  href="#"  onclick="open_left();"></a>
-  <a class="icon icon-gear pull-right"  onclick="open_right();"></a>
+ <a class="icon icon-gear pull-right"  onclick="open_right();"></a>
+  <button class="uk-button uk-button-danger icon uk-icon-plus-square pull-right"  onclick="open_ad();">AD</button>
   <h1 class="title">GALLERYBEAR</h1>
 </header>
 <div id="top_banner" style="height: 50px; display:none;">
@@ -115,7 +116,29 @@
                                     </div>
                                 </div>
                             </div>
+<div id="ad_center_modal" class="modal">
+  <header class="bar bar-nav">
+    <a class="icon icon-close pull-right" onclick="close_ad_center()"></a>
+    <h1 class="title">AD CENTER</h1>
+  </header>
 
+  
+  <table class="uk-table" style="margin-top:50px;">
+    <tr>
+      <th>PREMIUM MEMBER</th>
+      <td>7DAY</td>
+      <td>$100</td>
+        <td><a href="#" class="uk-button">buy</a></td>
+    </tr>
+    <tr>
+      <th>PREMIUM SHOP</th>
+      <td>7DAY</td>
+      <td>$100</td>
+        <td><a href="#" class="uk-button">buy</a></td>
+    </tr>
+  </table>
+  
+</div>
 <div id="chat_room_modal" class="modal">
   <header class="bar bar-nav">
     <a class="icon icon-close pull-right" onclick="close_chat_room()"></a>

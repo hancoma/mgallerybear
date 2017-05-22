@@ -11,9 +11,5 @@
             "PACKAGE_NAME": "com.gallerybearapp.anyphoto"
         }
     },
-    "dependent_plugins": {},
-    "modules": [],
-    "plugin_metadata": {
-        "cordova-plugin-inapppurchase": "1.1.0"
-    }
+    "dependent_plugins": {}
 }

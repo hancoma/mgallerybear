@@ -54,17 +54,15 @@ var app = {
 
 
 function buy_item() {
-inAppPurchase
+
+ inAppPurchase
   .buy('com.gallerybearapp.anyphoto1_1')
   .then(function (data) {
-    alert(data);
-    /*
-      {
-        transactionId: ...
-        receipt: ...
-        signature: ...
-      }
-    */
+    // ...then mark it as consumed: 
+    return inAppPurchase.consume(data.productType, data.receipt, data.signature);
+  })
+  .then(function () {
+    alert('product was successfully consumed!');
   })
   .catch(function (err) {
     alert(err);

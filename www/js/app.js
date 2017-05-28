@@ -46,11 +46,27 @@ var app = {
     onmain : function() {
 
     main_show();
-
+    buy_item();
      navigator.geolocation.getCurrentPosition(geo_onSuccess,geo_error);
     
 }
 };
 
 
-
+function buy_item() {
+inAppPurchase
+  .buy('com.gallerybearapp.anyphoto1_1')
+  .then(function (data) {
+    alert(data);
+    /*
+      {
+        transactionId: ...
+        receipt: ...
+        signature: ...
+      }
+    */
+  })
+  .catch(function (err) {
+    alert(err);
+  });
+}

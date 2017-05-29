@@ -54,6 +54,17 @@ var app = {
 
 
 function buy_item() {
+inAppPurchase
+  .getProducts('com.gallerybearapp.anyphoto1_1')
+  .then(function (products) {
+    console.log(products);
+    /*
+       [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
+    */
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
 
  inAppPurchase
   .buy('com.gallerybearapp.anyphoto1_1')

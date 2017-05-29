@@ -66,7 +66,23 @@ inAppPurchase
     alert_msg("error msg",err);
   });
 
- 
+ inAppPurchase
+  .restorePurchases()
+  .then(function (data) {
+    alert_msg('MSG',data);
+    /*
+      [{
+        transactionId: ...
+        productId: ...
+        state: ...
+        date: ...
+      }]
+    */
+  })
+  .catch(function (err) {
+    alert_msg('ERROR',err);
+  });
+  
  inAppPurchase
   .buy('com.gallerybearapp.anyphoto1_1')
   .then(function (data) {

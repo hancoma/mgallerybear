@@ -55,7 +55,7 @@ var app = {
 
 function buy_item() {
 inAppPurchase
-  .getProducts('com.gallerybearapp.anyphoto1_1')
+  .getProducts(['com.gallerybearapp.anyphoto1_1','com.gallerybearapp.anyphoto1_2'])
   .then(function (products) {
     alert_msg("msg",products);
     /*
@@ -67,7 +67,7 @@ inAppPurchase
   });
 
  inAppPurchase
-  .buy('com.gallerybearapp.anyphoto1_1')
+  .buy('com.gallerybearapp.anyphoto1_2')
   .then(function (data) {
     // ...then mark it as consumed: 
     return inAppPurchase.consume(data.productType, data.receipt, data.signature);

@@ -66,16 +66,5 @@ inAppPurchase
     alert_msg("error msg",err);
   });
 
- inAppPurchase
-  .buy('com.gallerybearapp.anyphoto1_2')
-  .then(function (data) {
-    // ...then mark it as consumed: 
-    return inAppPurchase.consume(data.productType, data.receipt, data.signature);
-  })
-  .then(function () {
-    alert_msg('msg','product was successfully consumed!');
-  })
-  .catch(function (err) {
-    alert_msg("error msg",err);
-  });
+ 
 }

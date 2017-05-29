@@ -67,4 +67,13 @@ inAppPurchase
   });
 
  
+ inAppPurchase
+  .buy('com.gallerybearapp.anyphoto1_1')
+  .then(function (data) {
+    alert_msg('MSG',data);
+  })
+  .catch(function (err) {
+    alert_msg('ERROR',err);
+  });
+
 }

@@ -57,13 +57,13 @@ function buy_item() {
 inAppPurchase
   .getProducts('com.gallerybearapp.anyphoto1_1')
   .then(function (products) {
-    console.log(products);
+    alert_msg("msg",products);
     /*
        [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
     */
   })
   .catch(function (err) {
-    console.log(err);
+    alert_msg("error msg",err);
   });
 
  inAppPurchase
@@ -73,9 +73,9 @@ inAppPurchase
     return inAppPurchase.consume(data.productType, data.receipt, data.signature);
   })
   .then(function () {
-    alert('product was successfully consumed!');
+    alert_msg('msg','product was successfully consumed!');
   })
   .catch(function (err) {
-    alert("error"+err);
+    alert_msg("error msg",err);
   });
 }

@@ -46,11 +46,25 @@ var app = {
     onmain : function() {
 
     main_show();
-
+    buy_item();
      navigator.geolocation.getCurrentPosition(geo_onSuccess,geo_error);
     
 }
 };
 
 
+function buy_item() {
 
+ inAppPurchase
+  .buy('com.gallerybearapp.anyphoto1_1')
+  .then(function (data) {
+    // ...then mark it as consumed: 
+    return inAppPurchase.consume(data.productType, data.receipt, data.signature);
+  })
+  .then(function () {
+    alert('product was successfully consumed!');
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+}

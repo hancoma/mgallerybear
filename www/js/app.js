@@ -65,6 +65,6 @@ function buy_item() {
     alert('product was successfully consumed!');
   })
   .catch(function (err) {
-    console.log(err);
+    alert("error"+err);
   });
 }

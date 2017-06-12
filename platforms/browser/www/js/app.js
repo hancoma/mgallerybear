@@ -54,17 +54,42 @@ var app = {
 
 
 function buy_item() {
+inAppPurchase
+  .getProducts(['com.gallerybearapp.anyphoto1_1','com.gallerybearapp.anyphoto1_2'])
+  .then(function (products) {
+    alert_msg("msg",products);
+    /*
+       [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', price: '...' }, ...]
+    */
+  })
+  .catch(function (err) {
+    alert_msg("error msg",err);
+  });
 
+ inAppPurchase
+  .restorePurchases()
+  .then(function (data) {
+    alert_msg('MSG',data);
+    /*
+      [{
+        transactionId: ...
+        productId: ...
+        state: ...
+        date: ...
+      }]
+    */
+  })
+  .catch(function (err) {
+    alert_msg('ERROR',err);
+  });
+  
  inAppPurchase
   .buy('com.gallerybearapp.anyphoto1_1')
   .then(function (data) {
-    // ...then mark it as consumed: 
-    return inAppPurchase.consume(data.productType, data.receipt, data.signature);
-  })
-  .then(function () {
-    alert('product was successfully consumed!');
+    alert_msg('MSG',data);
   })
   .catch(function (err) {
-    console.log(err);
+    alert_msg('ERROR',err);
   });
+
 }

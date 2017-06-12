@@ -28,12 +28,18 @@
 <header class="bar bar-nav">
  <a class="icon icon-left-nav pull-left"  href="#"  onclick="open_left();"></a>
  <a class="icon icon-gear pull-right"  onclick="open_right();"></a>
-  <button class="uk-button uk-button-danger icon uk-icon-plus-square pull-right"  onclick="open_ad();">AD</button>
+
+  <a class="icon uk-icon-paypal pull-right "  onclick="open_ad();"><span class='uk-text-small'>ad</span></a>
   <h1 class="title">GALLERYBEAR</h1>
 </header>
 <div id="top_banner" style="height: 50px; display:none;">
 </div>
-<div id="map" data-uk-grid style="height:30%;">map loading...
+<div id="map" data-uk-grid style="height:50%;">map loading...
+</div>
+<div class="uk-grid">
+<button class="uk-button uk-width-1-3 uk-button-mini uk-margin-small-bottom  uk-button-primary" onclick="map_50();" >50%</button>
+<button class="uk-button uk-width-1-3 uk-button-mini uk-margin-small-bottom  uk-button-danger" onclick="map_100();">100%</button>
+<button class="uk-button uk-width-1-3 uk-button-mini uk-margin-small-bottom  uk-button-success" onclick="add_shop();">ADD MYSHOP</button>
 </div>
 <div id="company_list" style="overflow-y: scroll; width:100%; height:70%;  ">
 </div>

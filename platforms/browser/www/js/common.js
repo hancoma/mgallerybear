@@ -757,8 +757,20 @@ function onConfirm(button) {
 function open_ad () {
 
 $("#ad_center_modal").addClass('active');
+  UIkit.offcanvas.hide('#offcanvas-right');
+var modal = UIkit.modal("#member_uk_modal");
+
+    modal.hide();
+
 }
 
 function close_ad_center() {
   $("#ad_center_modal").removeClass('active');
+}
+
+function map_50() {
+  $("#map").height("50%");
+}
+function map_100() {
+  $("#map").height("80%");
 }

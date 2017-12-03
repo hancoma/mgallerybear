@@ -52,6 +52,45 @@ function load_right() {
 $("#right_menu").html(data);
    });
 }
+function talent_show(cat) {
+  var cat=cat;
+  // 지도 숨김 
+  mode="self_camera";
+  $("#company_list").height("100%");
+  $("#map").hide();
+  $("#top_banner").show();
+ $.post("http://gallerybear.com/talent_list_app.php",
+   {
+    cat:cat
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+  UIkit.offcanvas.hide('#offcanvas-left');
+   });
+
+}
+function main_rand_show() {
+ var cat=cat;
+  // 지도 숨김 
+  mode="main";
+  $("#company_list").height("100%");
+  $("#map").hide();
+  $("#top_banner").show();
+ $.post("http://gallerybear.com/main_rand_app.php",
+   {
+    cat:cat
+    
+       },
+   function(data){
+
+$("#company_list").html(data);
+  UIkit.offcanvas.hide('#offcanvas-left');
+   });
+
+}
+
 function main_show() {
   mode="main";
  $("#company_list").height("70%");

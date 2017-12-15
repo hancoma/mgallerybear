@@ -499,11 +499,14 @@ var modal = UIkit.modal("#contents_uk_modal");
  jQuery("#modal_title").html(menu);
 }
 
-function member_info_modal_show(memberuid) {
-  var memberuid=memberuid;
+function member_info_modal_show(uid) {
+  
     $.post("http://gallerybear.com/member_info_modal_app.php",
    {
-    no:memberuid
+    no:uid,
+    memberuid:memberuid
+
+
     
        },
    function(data){

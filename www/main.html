@@ -168,7 +168,26 @@
   </nav>
   </div>
 
-
+<div id="modal_message_chat" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
+                            <div class="uk-modal-dialog">
+                                <button type="button" class="uk-modal-close uk-close"></button>
+                               
+                                <h2 id="message_chat_subject">MEMBER</h2>
+                                
+                                <div class="uk-overflow-container" id="message_chat_contents" style="max-height: 70%;">
+                                    
+                                </div>
+                                <div class="uk-modal-footer " id="message_box_button_box">
+                                    
+                                  
+<div class="uk-width-1-1 uk-form">
+  <a class="uk-button uk-button-small uk-button-danger" onclick='getImage_msg();'>picture upload</a>
+<input name="msg" id="msg" class="uk-width-3-4"><span class="uk-button uk-width-1-4 uk-button-danger" id="msg_send" onclick="msg_send_app()">SEND</span>
+</div>
+                                        <iframe name="post_msg" width=0 height=0></iframe>
+                                    </div>
+                            </div>
+                        </div>
 
 
 <div id="member_info_modal" class="modal">

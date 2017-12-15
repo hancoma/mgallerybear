@@ -40,7 +40,7 @@ $("#member_modal_contents").html(data);
 
 
 }
-
+// 쪽지 기능 
 function view_msg() {
   var uuid=device.uuid;
  
@@ -67,6 +67,34 @@ $("#mypage_modal_contents").html(data);
    });
 
 }
+
+function msg_room(room_no,by_uid,to_uid) {
+  var room_no=room_no;
+  var by_uid=by_uid;
+  var to_uid=to_uid;
+  console.log(room_no+" "+memberuid);
+
+
+    $.post("http://gallerybear.com/my_msg_app.php",
+   {
+    msg_room_no:room_no,
+    from_uid:by_uid,
+    to_uid:to_uid
+    
+       },
+   function(data){
+
+  var modal = UIkit.modal("#modal_message_chat");
+
+    modal.show();
+ 
+$("#message_chat_subject").html("MESSAGE ROOM");
+$("#message_chat_contents").html(data);
+
+  });
+}
+
+
 function join_msg_box(room_no,by_uid) {
   var room_no=room_no;
   var by_uid=by_uid;
@@ -115,6 +143,31 @@ $("#mypage_modal_contents").html(data);
 
    });
 
+}
+// 메시지 보내기 
+function msg_send_app() {
+  var from_uid=$("#from_uid").val();
+  var to_uid=$("#to_uid").val();
+  var msg_room_no=$("#msg_room_no").val();
+
+  var msg=$("#msg").val();
+  if (!msg) {
+    alert("not MESSAGE ");
+    return;
+  }
+
+    $.post("http://gallerybear.com/msg_save_app.php",
+     {
+        msg:msg,
+        msg_room_no:msg_room_no,
+        from_uid:from_uid,
+        to_uid:to_uid
+    
+       },
+           function(data){
+            $("#msg").val("");
+                msg_room(msg_room_no,from_uid,to_uid);
+           });
 }
 
 

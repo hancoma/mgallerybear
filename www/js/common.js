@@ -615,6 +615,22 @@ $("#freeboard_pic_list").html(data);
    });
 
 }
+
+function reload_guesthouse_input() {
+  var code=$("#guesthouse_code").val();
+  $.post("http://gallerybear.com/guesthouse_pic_list_app.php",
+   {
+    code:code
+    
+       },
+   function(data){
+
+$("#guesthouse_pic_list").html(data);
+
+   });
+
+}
+
 function save_freeboard() {
   var memberuid=$("#freeboard_memberuid").val();
   var code=$("#freeboard_code").val();
@@ -636,6 +652,29 @@ var modal = UIkit.modal("#add_contents_uk_modal");
    });
 
 }
+
+function save_guesthouse() {
+  var memberuid=$("#guesthouse_memberuid").val();
+  var code=$("#guesthouse_code").val();
+  var cat=$("#guesthouse_cat").val();
+  var contents=$("#guesthouse_contents").val();
+  console.log(contents);
+  $.post("http://gallerybear.com/save_guesthouse_app.php",
+   {
+    memberuid:memberuid,
+    cat:cat,
+    code:code,
+    contents:contents
+    
+       },
+   function(data){
+  parade_show(cat);
+var modal = UIkit.modal("#add_contents_uk_modal");
+    modal.hide();  
+   });
+
+}
+
 function add_talent(cat) {
   var cat=cat;
   console.log("memberuid="+memberuid);
@@ -698,7 +737,7 @@ function add_parade(cat) {
 $("#add_modal_contents").html(data);
 
    });
-$("#add_modal_title").html("WRITE LET'S DRIVE")
+$("#add_modal_title").html("WRITE GUEST HOUSE")
 
 var modal = UIkit.modal("#add_contents_uk_modal");
 

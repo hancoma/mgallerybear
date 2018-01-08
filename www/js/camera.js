@@ -3,6 +3,62 @@ var add_mode;
 var add_contents;
 var add_room_no;
 
+// guest house카메라 
+function getImage_guesthouse() {
+        
+        navigator.camera.getPicture(uploadPhoto_guesthouse, function(message) {
+alert('get picture failed');
+},{
+quality: 2,
+destinationType: navigator.camera.DestinationType.FILE_URI,
+sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+});}
+
+function uploadPhoto_guesthouse(imageURI) {
+       var memberuid=$("#guesthouse_memberuid").val();
+  var code=$("#guesthouse_code").val();
+  var cat=$("#guesthouse_cat").val();
+
+         navigator.notification.activityStart("PHOTO UPLOAD", "uploading photo");
+        var options = new FileUploadOptions();
+        options.fileKey="files";
+        options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+        options.mimeType="image/jpeg";
+
+        var params = new Object();
+        params.value1 = "test";
+        params.value2 = "param";
+        params.mode="guesthouse";
+        params.memberuid=memberuid;
+        params.code=code;
+        
+        params.category=cat;
+     
+
+        options.params = params;
+        options.chunkedMode = false;
+
+        var ft = new FileTransfer();
+        ft.upload(imageURI, "http://m.gallerybear.com/upload_app.php", win_guesthouse, fail_guesthouse, options);
+    }
+
+
+function win_guesthouse(r) {
+      var code=$("#guesthouse_code").val();
+navigator.notification.activityStop();
+  reload_guesthouse_input(code);
+  
+}
+
+
+function fail_guesthouse(error) {
+    console.log("upload error source " + error.source);
+    console.log("upload error target " + error.target);
+}
+
+
+
+
 // 프리보드 카메라 
 function getImage_freeboard() {
         

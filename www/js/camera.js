@@ -3,6 +3,61 @@ var add_mode;
 var add_contents;
 var add_room_no;
 
+// 셀프 카메라 
+function getImage_selfcamera() {
+        
+        navigator.camera.getPicture(uploadPhoto_selfcamera, function(message) {
+alert('get picture failed');
+},{
+quality: 2,
+destinationType: navigator.camera.DestinationType.FILE_URI,
+sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+});}
+
+function uploadPhoto_selfcamera(imageURI) {
+       var memberuid=$("#selfcamera_memberuid").val();
+  var code=$("#selfcamera_code").val();
+  var cat=$("#selfcamera_cat").val();
+         navigator.notification.activityStart("PHOTO UPLOAD", "uploading photo");
+        var options = new FileUploadOptions();
+        options.fileKey="files";
+        options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+        options.mimeType="image/jpeg";
+
+        var params = new Object();
+        params.value1 = "test";
+        params.value2 = "param";
+        params.mode="talent";
+        params.memberuid=memberuid;
+        params.code=code;
+        
+        params.category=cat;
+     
+
+        options.params = params;
+        options.chunkedMode = false;
+
+        var ft = new FileTransfer();
+        ft.upload(imageURI, "http://m.gallerybear.com/upload_app.php", win_selfcamera, fail_selfcamera, options);
+    }
+
+
+function win_selfcamera(r) {
+      var code=$("#selfcamera_code").val();
+navigator.notification.activityStop();
+  reload_selfcamera_input(code);
+  
+}
+
+
+function fail_selfcamera(error) {
+    console.log("upload error source " + error.source);
+    console.log("upload error target " + error.target);
+}
+
+
+
+
 //  메시지 이미지 업로드
 function getImage_msg() {
      var from_uid=$("#from_uid").val();

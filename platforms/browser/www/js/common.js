@@ -585,10 +585,24 @@ function msg_send(uid,msg) {
    });
 }
 //  콘텐츠 등록 
+// 셀프 카메라 사진 새로고침
+function reload_selfcamera_input() {
+  var code=$("#selfcamera_code").val();
+  $.post("http://gallerybear.com/selfcamera_pic_list_app.php",
+   {
+    code:code
+    
+       },
+   function(data){
 
+$("#selfcamera_list").html(data);
+
+   });
+
+}
 function add_talent(cat) {
   var cat=cat;
-  console.log("category="+cat)
+  console.log("memberuid="+memberuid);
     $.post("http://gallerybear.com/self_camera_app.php",
    {
     memberuid:memberuid,
@@ -600,7 +614,7 @@ function add_talent(cat) {
 $("#add_modal_contents").html(data);
 
    });
-$("#add_modal_title").html("UPLOAD SELF CAEMRA")
+$("#add_modal_title").html("UPLOAD SELF CAMERA")
 
 var modal = UIkit.modal("#add_contents_uk_modal");
 

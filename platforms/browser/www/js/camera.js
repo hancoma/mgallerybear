@@ -3,6 +3,59 @@ var add_mode;
 var add_contents;
 var add_room_no;
 
+// 프리보드 카메라 
+function getImage_freeboard() {
+        
+        navigator.camera.getPicture(uploadPhoto_freeboard, function(message) {
+alert('get picture failed');
+},{
+quality: 2,
+destinationType: navigator.camera.DestinationType.FILE_URI,
+sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+});}
+
+function uploadPhoto_freeboard(imageURI) {
+       var memberuid=$("#freeboard_memberuid").val();
+  var code=$("#freeboard_code").val();
+  var cat=$("#freeboard_cat").val();
+         navigator.notification.activityStart("PHOTO UPLOAD", "uploading photo");
+        var options = new FileUploadOptions();
+        options.fileKey="files";
+        options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+        options.mimeType="image/jpeg";
+
+        var params = new Object();
+        params.value1 = "test";
+        params.value2 = "param";
+        params.mode="freeboard";
+        params.memberuid=memberuid;
+        params.code=code;
+        
+        params.category=cat;
+     
+
+        options.params = params;
+        options.chunkedMode = false;
+
+        var ft = new FileTransfer();
+        ft.upload(imageURI, "http://m.gallerybear.com/upload_app.php", win_freeboard, fail_freeboard, options);
+    }
+
+
+function win_freeboard(r) {
+      var code=$("#freeboard_code").val();
+navigator.notification.activityStop();
+  reload_freeboard_input(code);
+  
+}
+
+
+function fail_freeboard(error) {
+    console.log("upload error source " + error.source);
+    console.log("upload error target " + error.target);
+}
+
+
 // 셀프 카메라 
 function getImage_selfcamera() {
         

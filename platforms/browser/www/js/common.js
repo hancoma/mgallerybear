@@ -600,6 +600,42 @@ $("#selfcamera_list").html(data);
    });
 
 }
+
+function reload_freeboard_input() {
+  var code=$("#freeboard_code").val();
+  $.post("http://gallerybear.com/freeboard_pic_list_app.php",
+   {
+    code:code
+    
+       },
+   function(data){
+
+$("#freeboard_pic_list").html(data);
+
+   });
+
+}
+function save_freeboard() {
+  var memberuid=$("#freeboard_memberuid").val();
+  var code=$("#freeboard_code").val();
+  var cat=$("#freeboard_cat").val();
+  var contents=$("#freeboard_contents").val();
+  console.log(contents);
+  $.post("http://gallerybear.com/save_freeboard_app.php",
+   {
+    memberuid:memberuid,
+    cat:cat,
+    code:code,
+    contents:contents
+    
+       },
+   function(data){
+  freeboard_show(cat);
+var modal = UIkit.modal("#add_contents_uk_modal");
+    modal.hide();  
+   });
+
+}
 function add_talent(cat) {
   var cat=cat;
   console.log("memberuid="+memberuid);

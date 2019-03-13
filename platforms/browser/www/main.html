@@ -84,8 +84,7 @@
                                     </div>
                                     <p id="member_modal_contents">LOADING DATA...</p>
                                     <div class="uk-modal-footer uk-text-right" id="member_modal_btn">
-                                        <button type="button" class="uk-button">Cancel</button>
-                                        <button type="button" class="uk-button uk-button-primary">Save</button>
+                                       <div class="uk-panel uk-panel-box uk-text-center"> 광고 </div>
                                     </div>
                                 </div>
                             </div>
@@ -118,6 +117,28 @@
                                     </div>
                                 </div>
                             </div>
+<!--광고모달-->
+<div id="ad_modal" class="uk-modal" aria-hidden="true" style="display: none; overflow-y: scroll;">
+                                <div class="uk-modal-dialog">
+                                    <button type="button" class="uk-modal-close uk-close"></button>
+                                    <div class="uk-modal-header">
+                                        <h2 id="ad_title">AD INFOMATION</h2>
+                                    </div>
+                                    <p id="ad_modal_contents">
+                                      <div class="uk-panel uk-panel-box" style="min-height:600px;">
+                                        광고
+                                      </div>
+
+                                  
+                                  </p>
+                                    <div class="uk-modal-footer uk-text-right" id="shop_modal_btn">
+                                        <button type="button" class="uk-button uk-modal-close">CLOSE</button>
+                                         
+                                    </div>
+                                </div>
+                            </div>
+<!--//광고 모달 끝 -->
+
 <div id="ad_center_modal" class="modal">
   <header class="bar bar-nav">
     <a class="icon icon-close pull-right" onclick="close_ad_center()"></a>
@@ -589,6 +610,11 @@ var infowindow = new google.maps.InfoWindow();
   
 
 
+//초기광고창 
+ // var modal = UIkit.modal("#ad_modal", {center: true});
+
+
+  //  modal.show();
 
   </script>
  
